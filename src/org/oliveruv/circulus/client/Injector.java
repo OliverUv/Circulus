@@ -18,15 +18,29 @@ package org.oliveruv.circulus.client;
 
 import org.oliveruv.circulus.client.resources.BundledResources;
 
+import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.event.logical.shared.ResizeHandler;
+import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.inject.client.GinModules;
 import com.google.gwt.inject.client.Ginjector;
+import com.google.gwt.place.shared.PlaceController;
+import com.google.gwt.place.shared.PlaceHistoryHandler;
 
-@GinModules(InjectionModule.class)
-public interface CirculusInjector extends Ginjector {
-  QuerySelector getQuerySelector();
+@GinModules(Module.class)
+public interface Injector extends Ginjector {
+	//jQuery + Resources
+	QuerySelector getQuerySelector();
 
-  SizeManager getResizeHandler();
-  
-  BundledResources getResources();
+	SizeManager getResizeHandler();
+
+	BundledResources getResources();
+
+	// MVP infrastructure
+	EventBus getEventBus();
+
+	PlaceController getPlaceController();
+
+	ActivityManager getActivityManager();
+
+	PlaceHistoryHandler getPlaceHistoryHandler();
 }

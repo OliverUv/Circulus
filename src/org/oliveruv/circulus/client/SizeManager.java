@@ -22,8 +22,8 @@ class SizeManager implements ResizeHandler {
 	double 				imageWidth;
 	double 				imageHeight;
 	double 				imageRatio;
-	String 				imageTagId = "#bg";
-	double				minimumSize = 700;
+	String 				imageTagId = "#" + Constants.resizeTagId;
+	double				minimumSize = Constants.minimumSiteSize;
 	
 	@Inject
 	SizeManager(QuerySelector querySelector, BundledResources resources){
@@ -36,23 +36,29 @@ class SizeManager implements ResizeHandler {
 	public void resizeImage(int screenWidth, int screenHeight) {
 		resizeImage((double) screenWidth, (double) screenHeight);
 	}
+	
 	public void resizeImage(double screenWidth, double screenHeight) {
+		
+		GQuery imageTag = $(imageTagId);
 		
 		//Prevent image from being smaller than minimumSize
 		//Also means we won't divide by zero if width or height == 0 
 		if (screenWidth < minimumSize && screenHeight < minimumSize) {
 			resizeImage(minimumSize, minimumSize);
+			centerImage(imageTag, screenWidth, screenHeight);
+			//make sure we center with the real widths and heights
 			return;
 		} else if (screenWidth < minimumSize) {
 			resizeImage(minimumSize, screenHeight);
+			centerImage(imageTag, screenWidth, screenHeight);
 			return;
 		} else if (screenHeight < minimumSize) {
 			resizeImage(screenWidth, minimumSize);
+			centerImage(imageTag, screenWidth, screenHeight);
 			return;
-		}
+		}	
 		
 		double screenRatio = screenHeight / screenWidth;
-		GQuery imageTag = $(imageTagId);
 		
 		if(screenRatio < imageRatio) {
 			imageTag.height((int) screenHeight);
@@ -64,6 +70,10 @@ class SizeManager implements ResizeHandler {
 			//log("2: ", screenRatio, screenHeight, screenWidth);
 		}
 
+		centerImage(imageTag, screenWidth, screenHeight);
+	}
+	
+	private void centerImage(GQuery imageTag, double screenWidth, double screenHeight) {
 		imageTag.css(CSS.LEFT.with(Length.px((screenWidth - imageTag.width())/2)));
 		imageTag.css(CSS.TOP.with(Length.px((screenHeight - imageTag.height())/2)));
 	}

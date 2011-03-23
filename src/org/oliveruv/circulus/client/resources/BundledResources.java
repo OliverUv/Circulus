@@ -8,20 +8,23 @@ import com.google.gwt.resources.client.ImageResource.RepeatStyle;
 
 public interface BundledResources extends ClientBundle {
 	public interface CirculusCssResource extends CssResource {
-		//String contentPane();
+		String backgroundImage();
+		String contentPane();
+		
+		String wikiImage();
 	}
 
 	@Source ("final-background-no-title.jpg")
 	public ImageResource background();
 	
 	@Source ("fbbutton.png")
-	public ImageResource facebookButton();
+	public ImageResource facebookImage();
 	
 	@Source ("lastfmbutton.png")
-	public ImageResource lastfmButton();
+	public ImageResource lastfmImage();
 	
 	@Source ("wikibutton.png")
-	public ImageResource wikipediaButton();
+	public ImageResource wikiImage();
 	
 	@Source ("final-title.png")
 	public ImageResource title();
