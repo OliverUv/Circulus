@@ -1,3 +1,5 @@
+@def LINK_HEIGHT 1%; 
+
 body {background:#000000;}
 
 #__bg {
@@ -25,8 +27,24 @@ body {background:#000000;}
 
 .wikiImage {
 	position: absolute;
-	top: 5%;
-	left: 10%;
-	height: 5%;
-	width: auto;
+	top: LINK_HEIGHT;
+	left: 1.5%;
+	height: auto;
+	width: 5%;
+}
+
+.lastfmImage {
+	position: absolute;
+	top: LINK_HEIGHT;
+	left: 7.5%;
+	height: auto;
+	width: 5%;
+}
+
+.fbImage {
+	position: absolute;
+	top: LINK_HEIGHT;
+	left: 13.5%;
+	height: auto;
+	width: 5%;
 }

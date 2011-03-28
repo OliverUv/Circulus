@@ -12,13 +12,15 @@ public interface BundledResources extends ClientBundle {
 		String contentPane();
 		
 		String wikiImage();
+		String lastfmImage();
+		String fbImage();
 	}
 
 	@Source ("final-background-no-title.jpg")
 	public ImageResource background();
 	
 	@Source ("fbbutton.png")
-	public ImageResource facebookImage();
+	public ImageResource fbImage();
 	
 	@Source ("lastfmbutton.png")
 	public ImageResource lastfmImage();

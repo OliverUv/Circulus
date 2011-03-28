@@ -16,9 +16,12 @@
 
 package org.oliveruv.circulus.client;
 
-import org.oliveruv.circulus.client.mvp.CirculusActivityMapper;
+import org.oliveruv.circulus.client.mvp.Content;
+import org.oliveruv.circulus.client.mvp.ContentActivityMapper;
 import org.oliveruv.circulus.client.mvp.CirculusPlaceHistoryMapper;
 import org.oliveruv.circulus.client.mvp.DefaultPlace;
+import org.oliveruv.circulus.client.mvp.Menu;
+import org.oliveruv.circulus.client.mvp.MenuActivityMapper;
 import org.oliveruv.circulus.client.news.NewsPlace;
 import org.oliveruv.circulus.client.resources.BundledResources;
 
@@ -39,41 +42,44 @@ public class Module extends AbstractGinModule {
 	protected void configure() {
 		// MVP infrastructure (see also @Providers below)
 		bind(EventBus.class).to(SimpleEventBus.class).in(Singleton.class);
-		bind(ActivityMapper.class).to(CirculusActivityMapper.class).in(
-				Singleton.class);
-
-		// Default place to start at
-		bind(Place.class).annotatedWith(DefaultPlace.class).to(NewsPlace.class);
-
+		//bind(PlaceController.class).in(Singleton.class);
+		bind(PlaceHistoryMapper.class).to(CirculusPlaceHistoryMapper.class)
+			.in(Singleton.class);
+		bind(ActivityMapper.class).to(ContentActivityMapper.class).in(Singleton.class);
+		//bind(ActivityManager.class).in(Singleton.class);
+		
 		// Places, Views, etc
-		//bind(NewsView.class).to(NewsWidget.class);
+		bind(NewsPlace.class).in(Singleton.class);
+		bind(Place.class).annotatedWith(DefaultPlace.class).to(
+				NewsPlace.class);
+		
 
 		// Resources + jQuery stuff
 		bind(BundledResources.class).in(Singleton.class);
 		bind(QuerySelector.class).in(Singleton.class);
 		bind(SizeManager.class).in(Singleton.class);
 	}
-
+	
 	@Singleton
 	@Provides
 	PlaceController providePlaceController(EventBus eventBus) {
 		return new PlaceController(eventBus);
 	}
-
+	
 	@Singleton
 	@Provides
 	ActivityManager provideActivityManager(ActivityMapper mapper,
 			EventBus eventBus) {
 		return new ActivityManager(mapper, eventBus);
 	}
-
+	
 	@Singleton
 	@Provides
 	PlaceHistoryHandler providePlaceHistoryHandler(PlaceHistoryMapper mapper,
-			PlaceController controller, EventBus eventBus,
-			@DefaultPlace Place defaultPlace) {
+			PlaceController placeController, EventBus eventBus, @DefaultPlace
+			Place defaultPlace) {
 		PlaceHistoryHandler phh = new PlaceHistoryHandler(mapper);
-		phh.register(controller, eventBus, defaultPlace);
+		phh.register(placeController, eventBus, defaultPlace);
 		return phh;
 	}
 }
