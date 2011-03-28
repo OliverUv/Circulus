@@ -104,9 +104,17 @@ public class Circulus implements EntryPoint {
 		
 		imageLinks.add(
 				createImageLink(
+						injector.getResources().title(),
+						injector.getResources().css().title(),
+						"Circulus", false,
+						"http://www.circulus.com"
+				));
+		
+		imageLinks.add(
+				createImageLink(
 						injector.getResources().wikiImage(),
 						injector.getResources().css().wikiImage(),
-						"Circulus on Wikipedia",
+						"Circulus on Wikipedia", true,
 						"http://en.wikipedia.org/wiki/Circulus"
 				));
 		
@@ -114,7 +122,7 @@ public class Circulus implements EntryPoint {
 				createImageLink(
 						injector.getResources().lastfmImage(),
 						injector.getResources().css().lastfmImage(),
-						"Circulus on last.fm",
+						"Circulus on last.fm", true,
 						"http://www.last.fm/music/Circulus"
 				));
 		
@@ -122,7 +130,7 @@ public class Circulus implements EntryPoint {
 				createImageLink(
 						injector.getResources().fbImage(),
 						injector.getResources().css().fbImage(),
-						"Circulus on Facebook",
+						"Circulus on Facebook", true,
 						"http://www.facebook.com/pages/Circulus/109390525753763"
 				));
 		
@@ -130,12 +138,12 @@ public class Circulus implements EntryPoint {
 	}
 
 	private Anchor createImageLink(ImageResource imageResource, String cssClassName,
-			String altText, final String url) {
+			String altText, boolean altAsTitle, final String url) {
 		
 		Element img = DOM.createImg();
 		img.setClassName(cssClassName);
 		img.setAttribute("alt", altText);
-		img.setAttribute("title", altText);
+		if (altAsTitle) {img.setAttribute("title", altText);}
 		img.setAttribute("src", imageResource.getURL());
 
 		Anchor link = new Anchor(img.getString(), true, url);

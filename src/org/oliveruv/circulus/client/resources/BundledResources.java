@@ -11,6 +11,7 @@ public interface BundledResources extends ClientBundle {
 		String backgroundImage();
 		String contentPane();
 		
+		String title();
 		String wikiImage();
 		String lastfmImage();
 		String fbImage();
