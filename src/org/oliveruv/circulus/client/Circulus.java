@@ -3,6 +3,7 @@ package org.oliveruv.circulus.client;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.oliveruv.circulus.client.menu.Menu;
 import org.oliveruv.circulus.client.news.NewsPlace;
 import org.oliveruv.circulus.client.news.NewsView;
 
@@ -41,7 +42,6 @@ import static com.google.gwt.query.client.css.CSS.*;
 public class Circulus implements EntryPoint {
 	private final Injector injector = GWT.create(Injector.class);
 	private SimplePanel contentContainer = new SimplePanel();
-	private SimplePanel menu = new SimplePanel();
 
 	public void onModuleLoad() {
 		//Set up MVP
@@ -54,11 +54,12 @@ public class Circulus implements EntryPoint {
 		SizeManager resizeHandler = injector.getResizeHandler();
 		com.google.gwt.user.client.Window.addResizeHandler(resizeHandler);
 		
-		addContent();
+		addStaticContent();
 		injector.getResources().css().ensureInjected();
 		initializeImageSize(resizeHandler);
 		
 		//Launch app
+		RootPanel.get(Constants.menuPaneId).add(injector.getMenu());
 		RootPanel.get(Constants.contentPaneId).add(contentContainer);
 		phh.handleCurrentHistory();
 	}
@@ -67,7 +68,7 @@ public class Circulus implements EntryPoint {
 		resizeHandler.resizeImage(Window.getClientWidth(), Window.getClientHeight());
 	}
 
-	private void addContent() {
+	private void addStaticContent() {
 		//Add stretched image as background
 		$("#"+ Constants.resizeTagId).append(
 				"<img class=\"" +
@@ -77,6 +78,16 @@ public class Circulus implements EntryPoint {
 				"\"/>"
 				);
 		
+		//Add menu pane
+		$("#"+ Constants.resizeTagId).append(
+				"<div class=\"" +
+				injector.getResources().css().menuPane() +
+				"\" id=\"" + 
+				Constants.menuPaneId +
+				"\"/>"
+				);
+		
+		//Add content pane
 		$("#"+ Constants.resizeTagId).append(
 				"<div class=\"" +
 				injector.getResources().css().contentPane() +
@@ -85,12 +96,18 @@ public class Circulus implements EntryPoint {
 				"\"/>"
 				);
 		
-		$("." + Constants.contentPaneId).append(
+		//Add credits url
+		$("#"+ Constants.resizeTagId).append(
 				"<div class=\"" +
-				injector.getResources().css().contentPane() +
-				"\" id=\"" + 
-				Constants.contentPaneId +
-				"\"/>"
+				injector.getResources().css().pixies() +
+				"\"/><a href=\"http://www.github.com/OliverUv\">Powered by Pixies</a>"
+				);
+		
+		//Add copyright url
+		$("#"+ Constants.resizeTagId).append(
+				"<div class=\"" +
+				injector.getResources().css().copyright() +
+				"\"/><a href=\"http://www.github.com/OliverUv/Circulus/blob/master/COPYRIGHT\">Copyrights etc, don't be a dick.</a>"
 				);
 		
 		//Add external image links
@@ -107,7 +124,7 @@ public class Circulus implements EntryPoint {
 						injector.getResources().title(),
 						injector.getResources().css().title(),
 						"Circulus", false,
-						"http://www.circulus.com"
+						"http://www.circulus.org"
 				));
 		
 		imageLinks.add(

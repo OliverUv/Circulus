@@ -16,12 +16,11 @@
 
 package org.oliveruv.circulus.client;
 
+import org.oliveruv.circulus.client.menu.Menu;
 import org.oliveruv.circulus.client.mvp.Content;
 import org.oliveruv.circulus.client.mvp.ContentActivityMapper;
 import org.oliveruv.circulus.client.mvp.CirculusPlaceHistoryMapper;
 import org.oliveruv.circulus.client.mvp.DefaultPlace;
-import org.oliveruv.circulus.client.mvp.Menu;
-import org.oliveruv.circulus.client.mvp.MenuActivityMapper;
 import org.oliveruv.circulus.client.news.NewsPlace;
 import org.oliveruv.circulus.client.resources.BundledResources;
 
@@ -49,6 +48,7 @@ public class Module extends AbstractGinModule {
 		//bind(ActivityManager.class).in(Singleton.class);
 		
 		// Places, Views, etc
+		bind(Menu.class).in(Singleton.class);
 		bind(NewsPlace.class).in(Singleton.class);
 		bind(Place.class).annotatedWith(DefaultPlace.class).to(
 				NewsPlace.class);

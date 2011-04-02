@@ -2,6 +2,7 @@ package org.oliveruv.circulus.client.resources;
 
 import com.google.gwt.resources.client.ClientBundle;
 import com.google.gwt.resources.client.CssResource;
+import com.google.gwt.resources.client.DataResource;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.resources.client.ImageResource.ImageOptions;
 import com.google.gwt.resources.client.ImageResource.RepeatStyle;
@@ -9,7 +10,12 @@ import com.google.gwt.resources.client.ImageResource.RepeatStyle;
 public interface BundledResources extends ClientBundle {
 	public interface CirculusCssResource extends CssResource {
 		String backgroundImage();
+		String menuPane();
 		String contentPane();
+		
+		String menuBar();
+		String pixies();
+		String copyright();
 		
 		String title();
 		String wikiImage();
@@ -17,7 +23,7 @@ public interface BundledResources extends ClientBundle {
 		String fbImage();
 	}
 
-	@Source ("final-background-no-title.jpg")
+	@Source ("newscan-bg.jpg")
 	public ImageResource background();
 	
 	@Source ("fbbutton.png")
@@ -34,4 +40,7 @@ public interface BundledResources extends ClientBundle {
 
 	@Source ("circulus.css")
 	public CirculusCssResource css();
+	
+	@Source ("Fertigo_PRO.otf")
+	public DataResource fertigo();
 }

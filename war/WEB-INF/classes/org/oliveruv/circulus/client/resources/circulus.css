@@ -1,6 +1,28 @@
-@def LINK_HEIGHT 1%; 
+@external menuSeparatorInner;
+
+@def LINK_HEIGHT 1%;
+
+@url fertigoUrl fertigo;
+
+/*literal("@font-face
+{
+	font-family: Meddon;
+	src: fertigoUrl format("opentype");
+}");*/
 
 body {background:#000000;}
+
+
+a img {
+	border: none;	
+}
+
+a {
+	text-decoration: inherit;
+	font-weight: inherit;
+	color: inherit;
+	background-color: inherit;
+}
 
 #__bg {
 	display: block;
@@ -16,6 +38,33 @@ body {background:#000000;}
 	z-index:-420;
 }
 
+.menuPane {
+	position: absolute;
+	/*top: 21.5%;   top of white area
+	left: 53%;*/
+	top: 32%;
+	left: 8%;
+	z-index: 2;
+	font-family: Cardo;
+	font-size: 240%;
+	font-weight: bold;
+	font-style: italic;
+	color: #43442d;
+	text-shadow:
+		1px 1px 0px #fbf8b4,
+		0px 0px 4px #eee,
+		0px 0px 4px #eee; /* 444 */
+}
+
+.menuSeparatorInner {
+	background:#F00;
+	width: 2000%;	
+}
+
+.menuBar {
+		
+}
+
 .contentPane {
 	position: absolute;
 	top: 0px;
@@ -27,8 +76,8 @@ body {background:#000000;}
 
 .title {
 	position: absolute;
-	top: 15%; /* 9 // 13.5 */
-	left: 7.5%;
+	top: 9%;
+	left: 5%;
 	height: 21.5%;
 	width: auto;
 }
@@ -55,4 +104,39 @@ body {background:#000000;}
 	left: 13.5%;
 	height: auto;
 	width: 5%;
+}
+
+.pixies {
+	position: absolute;
+	opacity: .9;
+	bottom: 1%;
+	right: 1.5%;
+	z-index: 2;
+	font-family: Quattrocento;
+	font-size: 120%;
+	font-weight: bold;
+	font-style: italic;
+	color: #FFF;
+	text-shadow:
+		-2px 0px 1px #59571d,
+		0px -2px 1px #59571d,
+		2px 0px 1px #59571d,
+		0px 2px 1px #59571d;
+}
+
+.copyright {
+	position: absolute;
+	opacity: .75;
+	bottom: 1%;
+	left: 1.5%;
+	z-index: 2;
+	font-family: Quattrocento;
+	font-size: 120%;
+	font-weight: bold;
+	color: #FFF;
+	text-shadow:
+		-2px 0px 1px #59571d,
+		0px -2px 1px #59571d,
+		2px 0px 1px #59571d,
+		0px 2px 1px #59571d;
 }

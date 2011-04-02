@@ -8,6 +8,7 @@ import com.google.gwt.event.logical.shared.ResizeHandler;
 import com.google.gwt.query.client.GQuery;
 import com.google.gwt.query.client.css.CSS;
 import com.google.gwt.query.client.css.Length;
+import com.google.gwt.query.client.css.FontSizeProperty.FontSize;
 import com.google.inject.Inject;
 
 import com.google.gwt.query.client.Function;
@@ -63,10 +64,12 @@ class SizeManager implements ResizeHandler {
 		if(screenRatio < imageRatio) {
 			imageTag.height((int) screenHeight);
 			imageTag.width((int) (screenHeight / imageRatio));
+			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenHeight) / imageHeight)));
 			//log("1: ", screenRatio, screenHeight, screenWidth);
 		} else {
 			imageTag.width((int) screenWidth);
 			imageTag.height((int) (screenWidth * imageRatio));
+			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenWidth) / imageWidth)));
 			//log("2: ", screenRatio, screenHeight, screenWidth);
 		}
 

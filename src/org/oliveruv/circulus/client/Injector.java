@@ -16,6 +16,7 @@
 
 package org.oliveruv.circulus.client;
 
+import org.oliveruv.circulus.client.menu.Menu;
 import org.oliveruv.circulus.client.news.NewsPlace;
 import org.oliveruv.circulus.client.news.NewsPresenter;
 import org.oliveruv.circulus.client.resources.BundledResources;
@@ -28,6 +29,7 @@ import com.google.gwt.inject.client.Ginjector;
 import com.google.gwt.place.shared.Place;
 import com.google.gwt.place.shared.PlaceController;
 import com.google.gwt.place.shared.PlaceHistoryHandler;
+import com.google.gwt.user.client.ui.Widget;
 
 @GinModules(Module.class)
 public interface Injector extends Ginjector {
@@ -49,4 +51,6 @@ public interface Injector extends Ginjector {
 	
 	// Places / Activities / Views
 	NewsPlace getNewsPlace();
+
+	Menu getMenu();
 }
