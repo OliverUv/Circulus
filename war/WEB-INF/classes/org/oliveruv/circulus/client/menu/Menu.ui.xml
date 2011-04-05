@@ -5,13 +5,13 @@
    
   <g:HTMLPanel>
    
-    <g:MenuBar ui:field="menuBar" styleName='{res.css.menuBar}'>
-      <g:MenuItem ui:field="news">News</g:MenuItem>
-      <g:MenuItem ui:field="bio">Bio</g:MenuItem>
-      <g:MenuItem ui:field="discog">Discog</g:MenuItem>
-      <g:MenuItem ui:field="live">Live</g:MenuItem>
-      <g:MenuItem ui:field="media">Media</g:MenuItem>
-    </g:MenuBar>
+    <ul class='{res.css.miniflex}'>
+    	<li><g:Anchor ui:field="news" href="http://www.circulus.org/news">News</g:Anchor></li>
+    	<li><g:Anchor ui:field="bio" href="http://www.circulus.org/bio">Bio</g:Anchor></li>
+    	<li><g:Anchor ui:field="discog" href="http://www.circulus.org/discog">Discog</g:Anchor></li>
+    	<li><g:Anchor ui:field="live" href="http://www.circulus.org/live">Live</g:Anchor></li>
+    	<li><g:Anchor ui:field="media" href="http://www.circulus.org/media">Media</g:Anchor></li>
+    </ul>
    
   </g:HTMLPanel>
    

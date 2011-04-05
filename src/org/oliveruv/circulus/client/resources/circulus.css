@@ -40,29 +40,59 @@ a {
 
 .menuPane {
 	position: absolute;
-	/*top: 21.5%;   top of white area
-	left: 53%;*/
 	top: 32%;
-	left: 8%;
+	left: 3.3%;
+	width: 60%;
+	height: 8%;
 	z-index: 2;
 	font-family: Cardo;
 	font-size: 240%;
 	font-weight: bold;
-	font-style: italic;
-	color: #43442d;
+	font-style: oblique;
+	color: #d1d195;
+	
 	text-shadow:
-		1px 1px 0px #fbf8b4,
-		0px 0px 4px #eee,
-		0px 0px 4px #eee; /* 444 */
+		1px 1px 0px #43442d,
+		2px 2px 1px #f0f09a;
+}
+@if user.agent ie6 ie8 {
+	.menuPane {
+		left: 8.5%;
+		color: #f0f09a;
+		font-size: 320%;
+		font-family: Palatino;
+	}
 }
 
-.menuSeparatorInner {
-	background:#F00;
-	width: 2000%;	
+.miniflex {
+	width: 100%;
+	float: left;
+	margin: 0 0 0 0;
+	padding: 0 0.5% 0 0.5%;
+}
+ 
+.miniflex li {
+	float: left;
+	margin: 0 3.5% 0 0;
+	padding: 0;
+	display: inline;
+	list-style: none;
+}
+	
+.miniflex a:link, .miniflex a:visited {
+	float: left;
+	margin: 0 0.5% 0 0.5%;
 }
 
-.menuBar {
-		
+.miniflex a.active:link, .miniflex a.active:visited, .miniflex a:hover {
+	color: #e4e477;
+	border-bottom: 5px solid #d0d385;
+	padding-bottom: 0.5%;
+}
+
+.miniflex a.active:link, .miniflex a.active:visited {
+	border-bottom: 5px solid #d0d385;
+	padding-bottom: 0.5%;
 }
 
 .contentPane {

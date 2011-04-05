@@ -13,7 +13,8 @@ public interface BundledResources extends ClientBundle {
 		String menuPane();
 		String contentPane();
 		
-		String menuBar();
+		String miniflex();
+		String active();
 		String pixies();
 		String copyright();
 		
