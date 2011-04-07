@@ -6,11 +6,11 @@
   <g:HTMLPanel>
    
     <ul class='{res.css.miniflex}'>
-    	<li><g:Anchor ui:field="news" href="http://www.circulus.org/news">News</g:Anchor></li>
-    	<li><g:Anchor ui:field="bio" href="http://www.circulus.org/bio">Bio</g:Anchor></li>
-    	<li><g:Anchor ui:field="discog" href="http://www.circulus.org/discog">Discog</g:Anchor></li>
-    	<li><g:Anchor ui:field="live" href="http://www.circulus.org/live">Live</g:Anchor></li>
-    	<li><g:Anchor ui:field="media" href="http://www.circulus.org/media">Media</g:Anchor></li>
+    	<li><g:Hyperlink ui:field="news">News</g:Hyperlink></li>
+    	<li><g:Hyperlink ui:field="bio">Bio</g:Hyperlink></li>
+    	<li><g:Hyperlink ui:field="discog">Discog</g:Hyperlink></li>
+    	<li><g:Hyperlink ui:field="live">Live</g:Hyperlink></li>
+    	<li><g:Hyperlink ui:field="media">Media</g:Hyperlink></li>
     </ul>
    
   </g:HTMLPanel>

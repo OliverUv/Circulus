@@ -57,11 +57,19 @@ a {
 }
 @if user.agent ie6 ie8 {
 	.menuPane {
-		left: 8.5%;
-		color: #f0f09a;
+		left: 7.3%;
 		font-size: 320%;
 		font-family: Palatino;
 	}
+}
+
+.contentPane {
+	position: absolute;
+	top: 22%;
+	left: 53%;
+	width: 32%;
+	height: 70%;
+	z-index: 1;
 }
 
 .miniflex {
@@ -93,15 +101,6 @@ a {
 .miniflex a.active:link, .miniflex a.active:visited {
 	border-bottom: 5px solid #d0d385;
 	padding-bottom: 0.5%;
-}
-
-.contentPane {
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	height: 100%;
-	width: 100%;
-	z-index:0;
 }
 
 .title {

@@ -9,9 +9,9 @@ import com.google.gwt.resources.client.ImageResource.RepeatStyle;
 
 public interface BundledResources extends ClientBundle {
 	public interface CirculusCssResource extends CssResource {
+		String contentPane();
 		String backgroundImage();
 		String menuPane();
-		String contentPane();
 		
 		String miniflex();
 		String active();

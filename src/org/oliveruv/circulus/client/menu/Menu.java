@@ -10,6 +10,7 @@ import com.google.gwt.uibinder.client.UiField;
 import com.google.gwt.user.client.Command;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.MenuBar;
 import com.google.gwt.user.client.ui.MenuItem;
 import com.google.gwt.user.client.ui.MenuItemSeparator;
@@ -20,11 +21,11 @@ public class Menu extends Composite {
 	interface MenuUiBinder extends UiBinder<Widget, Menu> {}
 	private static MenuUiBinder uiBinder = GWT.create(MenuUiBinder.class);
 	
-	@UiField Anchor news;
-	@UiField Anchor bio;
-	@UiField Anchor discog;
-	@UiField Anchor live;
-	@UiField Anchor media;
+	@UiField Hyperlink news;
+	@UiField Hyperlink bio;
+	@UiField Hyperlink discog;
+	@UiField Hyperlink live;
+	@UiField Hyperlink media;
 	
 	@UiField(provided = true)
 	final BundledResources res;
@@ -34,18 +35,6 @@ public class Menu extends Composite {
 	public Menu(BundledResources resources) {
 		this.res = resources;
 		initWidget(uiBinder.createAndBindUi(this));
-		
-	}
-	
-	public class MenuCommand implements Command {
-		//final HistoryToken historyToken;
-		public MenuCommand() {
-			
-		}
-
-		@Override
-		public void execute() {
-			
-		}
+		//news.setTargetHistoryToken()
 	}
 }

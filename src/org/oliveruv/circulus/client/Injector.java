@@ -53,4 +53,6 @@ public interface Injector extends Ginjector {
 	NewsPlace getNewsPlace();
 
 	Menu getMenu();
+
+	StaticContent getStaticContent();
 }
