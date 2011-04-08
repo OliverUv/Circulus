@@ -21,7 +21,10 @@ import org.oliveruv.circulus.client.mvp.Content;
 import org.oliveruv.circulus.client.mvp.ContentActivityMapper;
 import org.oliveruv.circulus.client.mvp.CirculusPlaceHistoryMapper;
 import org.oliveruv.circulus.client.mvp.DefaultPlace;
+import org.oliveruv.circulus.client.news.NewsActivity;
 import org.oliveruv.circulus.client.news.NewsPlace;
+import org.oliveruv.circulus.client.news.NewsView;
+import org.oliveruv.circulus.client.news.NewsViewImpl;
 import org.oliveruv.circulus.client.resources.BundledResources;
 
 import com.google.gwt.activity.shared.ActivityManager;
@@ -47,17 +50,21 @@ public class Module extends AbstractGinModule {
 		bind(ActivityMapper.class).to(ContentActivityMapper.class).in(Singleton.class);
 		//bind(ActivityManager.class).in(Singleton.class);
 		
-		// Places, Views, etc
-		bind(Menu.class).in(Singleton.class);
-		bind(NewsPlace.class).in(Singleton.class);
-		bind(Place.class).annotatedWith(DefaultPlace.class).to(
-				NewsPlace.class);
-		
-
 		// Resources + jQuery stuff
 		bind(BundledResources.class).in(Singleton.class);
 		bind(QuerySelector.class).in(Singleton.class);
 		bind(SizeManager.class).in(Singleton.class);
+		bind(ContentProvider.class).in(Singleton.class);
+		
+		// Places, Views, etc
+		bind(Menu.class).in(Singleton.class);
+		
+		bind(Place.class).annotatedWith(DefaultPlace.class).to(
+				NewsPlace.class);
+		
+		bind(NewsPlace.class).in(Singleton.class);
+		bind(NewsActivity.class).in(Singleton.class);
+		bind(NewsView.class).to(NewsViewImpl.class).in(Singleton.class);
 	}
 	
 	@Singleton

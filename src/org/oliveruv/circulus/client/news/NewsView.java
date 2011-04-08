@@ -7,5 +7,6 @@ public interface NewsView extends IsWidget {
 	
 	public interface Presenter {
 		void setView(NewsView view);
+		String getNews();
 	}
 }

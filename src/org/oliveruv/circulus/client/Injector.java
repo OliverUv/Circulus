@@ -18,7 +18,7 @@ package org.oliveruv.circulus.client;
 
 import org.oliveruv.circulus.client.menu.Menu;
 import org.oliveruv.circulus.client.news.NewsPlace;
-import org.oliveruv.circulus.client.news.NewsPresenter;
+import org.oliveruv.circulus.client.news.NewsActivity;
 import org.oliveruv.circulus.client.resources.BundledResources;
 
 import com.google.gwt.activity.shared.ActivityManager;

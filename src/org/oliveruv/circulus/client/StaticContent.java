@@ -9,6 +9,8 @@ import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.Hyperlink;
+import com.google.gwt.user.client.ui.UIObject;
 import com.google.inject.Inject;
 
 
@@ -63,6 +65,10 @@ public class StaticContent {
 				"\"/><a href=\"http://www.github.com/OliverUv/Circulus/blob/master/COPYRIGHT\">Copyrights etc, don't be a dick.</a>"
 				);
 		
+		//Add title link image
+		$("#"+ Constants.resizeTagId)
+		.append(createTitleLink().getElement().getString());
+		
 		//Add external image links
 		for (Anchor link : createImageLinks()) {
 			$("#"+ Constants.resizeTagId)
@@ -70,16 +76,18 @@ public class StaticContent {
 		}
 	}
 
+	private Hyperlink createTitleLink() {
+		Element img = DOM.createImg();
+		img.setClassName(injector.getResources().css().title());
+		img.setAttribute("alt", "Circulus");
+		img.setAttribute("src", injector.getResources().title().getURL());
+
+		Hyperlink link = new Hyperlink(img.getString(), true, "");
+		return link;
+	}
+
 	private List<Anchor> createImageLinks() {
 		List<Anchor> imageLinks = new ArrayList<Anchor>();
-		
-		imageLinks.add(
-				createImageLink(
-						injector.getResources().title(),
-						injector.getResources().css().title(),
-						"Circulus", false,
-						"http://www.circulus.org"
-				));
 		
 		imageLinks.add(
 				createImageLink(

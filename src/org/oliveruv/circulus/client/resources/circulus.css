@@ -144,7 +144,7 @@ a {
 	font-family: Quattrocento;
 	font-size: 120%;
 	font-weight: bold;
-	font-style: italic;
+	font-style: oblique;
 	color: #FFF;
 	text-shadow:
 		-2px 0px 1px #59571d,
@@ -162,6 +162,7 @@ a {
 	font-family: Quattrocento;
 	font-size: 120%;
 	font-weight: bold;
+	font-style: oblique;
 	color: #FFF;
 	text-shadow:
 		-2px 0px 1px #59571d,

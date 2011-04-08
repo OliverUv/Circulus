@@ -4,7 +4,7 @@
   <ui:with field='res' type='org.oliveruv.circulus.client.resources.BundledResources'/>
    
   <g:HTMLPanel>
-   
+  
     <ul class='{res.css.miniflex}'>
     	<li><g:Hyperlink ui:field="news">News</g:Hyperlink></li>
     	<li><g:Hyperlink ui:field="bio">Bio</g:Hyperlink></li>
