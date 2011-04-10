@@ -1,6 +1,7 @@
 package org.oliveruv.circulus.client.mvp;
 
 import org.oliveruv.circulus.client.Injector;
+import org.oliveruv.circulus.client.bio.BioPlace;
 import org.oliveruv.circulus.client.news.NewsActivity;
 import org.oliveruv.circulus.client.news.NewsPlace;
 
@@ -20,18 +21,25 @@ import com.google.inject.Inject;
 public class ContentActivityMapper implements ActivityMapper {
 
 	private final NewsActivity newsActivity;
+	private final NewsActivity bioActivity;
 	
 	@Override
 	public Activity getActivity(Place place) {
 		if (place instanceof NewsPlace) {
 			return newsActivity;
+		} else if (place instanceof BioPlace) {
+			return bioActivity;
 		}
 		return null;
 	}
 
 	@Inject
-	public ContentActivityMapper(NewsActivity newsActivity) {
+	public ContentActivityMapper(NewsActivity newsActivity,
+			NewsActivity bioActivity) {
 		super();
 		this.newsActivity = newsActivity;
+		this.bioActivity = bioActivity;
 	}
+
+	
 }

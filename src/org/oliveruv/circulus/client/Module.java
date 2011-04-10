@@ -16,6 +16,10 @@
 
 package org.oliveruv.circulus.client;
 
+import org.oliveruv.circulus.client.bio.BioActivity;
+import org.oliveruv.circulus.client.bio.BioPlace;
+import org.oliveruv.circulus.client.bio.BioView;
+import org.oliveruv.circulus.client.bio.BioViewImpl;
 import org.oliveruv.circulus.client.menu.Menu;
 import org.oliveruv.circulus.client.mvp.Content;
 import org.oliveruv.circulus.client.mvp.ContentActivityMapper;
@@ -60,11 +64,15 @@ public class Module extends AbstractGinModule {
 		bind(Menu.class).in(Singleton.class);
 		
 		bind(Place.class).annotatedWith(DefaultPlace.class).to(
-				NewsPlace.class);
+				NewsPlace.class).in(Singleton.class);
 		
 		bind(NewsPlace.class).in(Singleton.class);
 		bind(NewsActivity.class).in(Singleton.class);
 		bind(NewsView.class).to(NewsViewImpl.class).in(Singleton.class);
+		
+		bind(BioPlace.class).in(Singleton.class);
+		bind(BioActivity.class).in(Singleton.class);
+		bind(BioView.class).to(BioViewImpl.class).in(Singleton.class);
 	}
 	
 	@Singleton

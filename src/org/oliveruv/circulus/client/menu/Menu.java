@@ -34,12 +34,9 @@ public class Menu extends Composite {
 	@UiField(provided = true)
 	final BundledResources res;
 	
-	NewsPlace newsPlace;
-	
 	@Inject
-	public Menu(BundledResources resources, NewsPlace newsPlace) {
+	public Menu(BundledResources resources) {
 		this.res = resources;
-		this.newsPlace = newsPlace;
 		initWidget(uiBinder.createAndBindUi(this));
 		news.setTargetHistoryToken(Constants.newsPlaceName);
 		bio.setTargetHistoryToken(Constants.bioPlaceName);
