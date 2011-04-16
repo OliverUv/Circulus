@@ -1,4 +1,4 @@
-@external menuSeparatorInner;
+@external menuSeparatorInner active menuPane miniflex;
 
 @def LINK_HEIGHT 1%;
 
@@ -41,7 +41,7 @@ a {
 .menuPane {
 	position: absolute;
 	top: 32%;
-	left: 3.3%;
+	left: 5.0%;
 	width: 60%;
 	height: 8%;
 	z-index: 2;
@@ -92,13 +92,13 @@ a {
 	margin: 0 0.5% 0 0.5%;
 }
 
-.miniflex a.active:link, .miniflex a.active:visited, .miniflex a:hover {
+.miniflex a:hover {
 	color: #e4e477;
 	border-bottom: 5px solid #d0d385;
 	padding-bottom: 0.5%;
 }
 
-.miniflex a.active:link, .miniflex a.active:visited {
+.active {
 	border-bottom: 5px solid #d0d385;
 	padding-bottom: 0.5%;
 }

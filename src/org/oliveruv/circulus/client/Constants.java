@@ -8,4 +8,8 @@ public class Constants {
 	
 	public static final String newsPlaceName = "news";
 	public static final String bioPlaceName = "bio";
+	public static final String discogPlaceName = "discog";
+	public static final String livePlaceName = "live";
+	public static final String mediaPlaceName = "media";
+	public static final String welcomePlaceName = "";
 }

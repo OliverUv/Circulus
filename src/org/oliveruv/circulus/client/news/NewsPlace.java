@@ -12,7 +12,7 @@ public class NewsPlace extends Place {
 	public static class Tokenizer implements PlaceTokenizer<NewsPlace> {
         @Override
         public String getToken(NewsPlace place) {
-            return null;
+            return "";
         }
 
         @Override

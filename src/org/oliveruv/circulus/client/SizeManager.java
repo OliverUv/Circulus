@@ -27,7 +27,7 @@ class SizeManager implements ResizeHandler {
 	double				minimumSize = Constants.minimumSiteSize;
 	
 	@Inject
-	SizeManager(QuerySelector querySelector, BundledResources resources){
+	SizeManager(BundledResources resources){
 		this.resources   = resources;
 		this.imageWidth  = (double) resources.background().getWidth();
 		this.imageHeight = (double) resources.background().getHeight();

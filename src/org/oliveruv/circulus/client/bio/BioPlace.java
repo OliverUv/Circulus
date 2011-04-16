@@ -12,7 +12,7 @@ public class BioPlace extends Place {
 	public static class Tokenizer implements PlaceTokenizer<BioPlace> {
         @Override
         public String getToken(BioPlace place) {
-            return null;
+            return "";
         }
 
         @Override
