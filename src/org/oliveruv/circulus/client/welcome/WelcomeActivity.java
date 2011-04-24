@@ -5,6 +5,7 @@ import org.oliveruv.circulus.client.ContentProvider;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 public class WelcomeActivity extends AbstractActivity  implements WelcomeView.Presenter {
@@ -32,7 +33,12 @@ public class WelcomeActivity extends AbstractActivity  implements WelcomeView.Pr
 	}
 
 	@Override
-	public String getWelcome() {
-		return "Jolly welcomes!";
+	public Widget getWelcome() {
+		return contentProvider.getGreeting();
+	}
+
+	@Override
+	public Widget getNews() {
+		return contentProvider.getLatestNews();
 	}
 }

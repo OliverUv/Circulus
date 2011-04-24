@@ -22,6 +22,14 @@ public interface BundledResources extends ClientBundle {
 		String wikiImage();
 		String lastfmImage();
 		String fbImage();
+		
+		String newsDate();
+		String newsContent();
+		String newsAuthor();
+		
+		String contentTitle();
+		String contentText();
+		String latestNewsTitle();
 	}
 
 	@Source ("newscan-bg.jpg")

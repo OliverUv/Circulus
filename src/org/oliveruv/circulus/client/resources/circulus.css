@@ -41,12 +41,12 @@ a {
 .menuPane {
 	position: absolute;
 	top: 32%;
-	left: 5.0%;
+	left: 4%;
 	width: 60%;
 	height: 8%;
 	z-index: 2;
 	font-family: Cardo;
-	font-size: 240%;
+	font-size: 340%;
 	font-weight: bold;
 	font-style: oblique;
 	color: #d1d195;
@@ -57,18 +57,70 @@ a {
 }
 @if user.agent ie6 ie8 {
 	.menuPane {
-		left: 7.3%;
-		font-size: 320%;
-		font-family: Palatino;
+		font-family: Cardo;
+		left: 4.5%;
 	}
+}
+
+.contentTitle {
+	font-size: 250%;
+	
+	font-family: Tangerine;
+	text-shadow:
+		0px 0px 2px #777,
+		0px 0px 5px #FFF;
+	
+	padding-bottom: 2%;
+	padding-left: 2%;
+}
+
+.contentText {
+	color: #333;
+	font-family:
+    	georgia,		/* Windows, MacOS */
+						/* Fallback options */
+    	times,			/* Unix+X, MacOS */
+    	serif;
+	text-shadow:
+		0px 0px 5px #FFF,
+		0px 0px 7px #FFF,
+		0px 0px 10px #FFF;
+		
+	padding-top: 2%;
+}
+
+.newsAuthor {
+	font-family: Tangerine;
+	font-size: 120%;
+	padding-left: 5%;
+}
+.newsDate {
+	width: 100%;
+	padding-bottom: 0.5%;
+	border-bottom: 1px groove #777;
+}
+.newsContent {}
+
+.latestNewsTitle {
+	font-size: 200%;
+	
+	font-family: Tangerine;
+	text-shadow:
+		0px 0px 2px #777,
+		0px 0px 5px #FFF;
+	
+	padding-top: 15%;
+	padding-bottom: 2%;
+	padding-left: 6%;
 }
 
 .contentPane {
 	position: absolute;
 	top: 22%;
-	left: 53%;
-	width: 32%;
+	left: 55%;
+	width: 31.5%;
 	height: 70%;
+	font-size: 200%;
 	z-index: 1;
 }
 
@@ -101,6 +153,7 @@ a {
 .active {
 	border-bottom: 5px solid #d0d385;
 	padding-bottom: 0.5%;
+	outline: none;
 }
 
 .title {
@@ -142,7 +195,7 @@ a {
 	right: 1.5%;
 	z-index: 2;
 	font-family: Quattrocento;
-	font-size: 120%;
+	font-size: 180%;
 	font-weight: bold;
 	font-style: oblique;
 	color: #FFF;
@@ -160,7 +213,7 @@ a {
 	left: 1.5%;
 	z-index: 2;
 	font-family: Quattrocento;
-	font-size: 120%;
+	font-size: 180%;
 	font-weight: bold;
 	font-style: oblique;
 	color: #FFF;
