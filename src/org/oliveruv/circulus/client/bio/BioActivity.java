@@ -5,6 +5,8 @@ import org.oliveruv.circulus.client.ContentProvider;
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 public class BioActivity extends AbstractActivity  implements BioView.Presenter {
@@ -32,7 +34,7 @@ public class BioActivity extends AbstractActivity  implements BioView.Presenter 
 	}
 
 	@Override
-	public String getBio() {
-		return "Bio bots save the world!";
+	public Widget getBio() {
+		return contentProvider.getBiography();
 	}
 }

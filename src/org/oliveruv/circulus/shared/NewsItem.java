@@ -2,12 +2,6 @@ package org.oliveruv.circulus.shared;
 
 import java.util.Date;
 
-import org.oliveruv.circulus.client.resources.BundledResources;
-
-import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
-
 public class NewsItem {
 	private Date time;
 	private String author;
@@ -45,7 +39,7 @@ public class NewsItem {
 	}
 
 	public String getTimeString() {
-		return time.getYear() + "-" + time.getMonth() + "-" + time.getDay();
+		return time.getYear() + "-" + time.getMonth() + "-" + time.getDate();
 	}
 
 }

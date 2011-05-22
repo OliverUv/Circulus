@@ -82,7 +82,7 @@ public class Module extends AbstractGinModule {
 				WelcomePlace.class).in(Singleton.class);
 		
 		bind(NewsPlace.class).in(Singleton.class);
-		bind(NewsActivity.class).in(Singleton.class);
+		bind(NewsActivity.class);
 		bind(NewsView.class).to(NewsViewImpl.class).in(Singleton.class);
 		
 		bind(BioPlace.class).in(Singleton.class);
@@ -90,7 +90,7 @@ public class Module extends AbstractGinModule {
 		bind(BioView.class).to(BioViewImpl.class).in(Singleton.class);
 		
 		bind(DiscogPlace.class).in(Singleton.class);
-		bind(DiscogActivity.class).in(Singleton.class);
+		bind(DiscogActivity.class);
 		bind(DiscogView.class).to(DiscogViewImpl.class).in(Singleton.class);
 
 		bind(LivePlace.class).in(Singleton.class);

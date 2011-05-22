@@ -1,5 +1,9 @@
 package org.oliveruv.circulus.client.discog;
 
+import java.util.HashMap;
+
+import org.oliveruv.circulus.shared.ReleaseItem;
+
 import com.google.gwt.user.client.ui.IsWidget;
 
 public interface DiscogView extends IsWidget {
@@ -7,6 +11,7 @@ public interface DiscogView extends IsWidget {
 	
 	public interface Presenter {
 		void setView(DiscogView view);
-		String getDiscog();
+		HashMap<String, ReleaseItem> getDiscog();
+		String getCurrentAlbum();
 	}
 }

@@ -51,6 +51,8 @@ public interface Injector extends Ginjector {
 	CirculusPlaceHistoryMapper getPlaceHistoryMapper();
 
 	Menu getMenu();
-
+	
 	StaticContent getStaticContent();
+	
+	NewsActivity getNewsActivity();
 }

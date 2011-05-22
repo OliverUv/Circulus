@@ -44,9 +44,7 @@ public class StaticContent {
 		
 		//Add content pane
 		$("#"+ Constants.resizeTagId).append(
-				"<div class=\"" +
-				injector.getResources().css().contentPane() +
-				"\" id=\"" + 
+				"<div id=\"" + 
 				Constants.contentPaneId +
 				"\"/>"
 				);

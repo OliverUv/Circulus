@@ -13,6 +13,8 @@ public interface BundledResources extends ClientBundle {
 		String backgroundImage();
 		String menuPane();
 		
+		String albumPane();
+		
 		String miniflex();
 		String active();
 		String pixies();
@@ -26,11 +28,26 @@ public interface BundledResources extends ClientBundle {
 		String newsDate();
 		String newsContent();
 		String newsAuthor();
+		String newsNext();
+		String newsQuestion();
+		String newsAnswer();
 		
 		String contentTitle();
 		String contentText();
 		String latestNewsTitle();
 	}
+	
+	@Source ("clocks.jpg")
+	public ImageResource clocks();
+	
+	@Source ("giantism.jpg")
+	public ImageResource giantism();
+	
+	@Source ("lick.jpg")
+	public ImageResource lick();
+	
+	@Source ("thought.jpg")
+	public ImageResource thought();
 
 	@Source ("newscan-bg.jpg")
 	public ImageResource background();

@@ -1,6 +1,5 @@
 package org.oliveruv.circulus.client.mvp;
 
-import org.oliveruv.circulus.client.Injector;
 import org.oliveruv.circulus.client.bio.BioActivity;
 import org.oliveruv.circulus.client.bio.BioPlace;
 import org.oliveruv.circulus.client.discog.DiscogActivity;
@@ -18,6 +17,7 @@ import com.google.gwt.activity.shared.Activity;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.place.shared.Place;
 import com.google.inject.Inject;
+import com.google.inject.Provider;
 
 /***
  * Maps Places to Activities. With stateless places, we don't
@@ -29,7 +29,7 @@ import com.google.inject.Inject;
  */
 public class ContentActivityMapper implements ActivityMapper {
 
-	private final NewsActivity newsActivity;
+	private final Provider<NewsActivity> newsActivityProvider;
 	private final BioActivity bioActivity;
 	private final DiscogActivity discogActivity;
 	private final LiveActivity liveActivity;
@@ -39,7 +39,9 @@ public class ContentActivityMapper implements ActivityMapper {
 	@Override
 	public Activity getActivity(Place place) {
 		if (place instanceof NewsPlace) {
-			return newsActivity;
+			NewsActivity na = newsActivityProvider.get();
+			na.initialize((NewsPlace) place);
+			return na;
 		} else if (place instanceof BioPlace) {
 			return bioActivity;
 		} else if (place instanceof DiscogPlace) {
@@ -55,12 +57,12 @@ public class ContentActivityMapper implements ActivityMapper {
 	}
 
 	@Inject
-	public ContentActivityMapper(NewsActivity newsActivity,
+	public ContentActivityMapper(Provider<NewsActivity> newsActivityProvider,
 			BioActivity bioActivity, DiscogActivity discogActivity,
 			LiveActivity liveActivity, MediaActivity mediaActivity,
 			WelcomeActivity welcomeActivity) {
 		super();
-		this.newsActivity = newsActivity;
+		this.newsActivityProvider = newsActivityProvider;
 		this.bioActivity = bioActivity;
 		this.discogActivity = discogActivity;
 		this.liveActivity = liveActivity;

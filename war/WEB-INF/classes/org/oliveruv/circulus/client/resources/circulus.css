@@ -93,13 +93,41 @@ a {
 	font-family: Tangerine;
 	font-size: 120%;
 	padding-left: 5%;
+	padding-bottom: 2%;
 }
+
 .newsDate {
 	width: 100%;
 	padding-bottom: 0.5%;
 	border-bottom: 1px groove #777;
 }
+
+.newsNext {
+	/*float: right;
+	padding-right: 15%;*/
+	position: absolute;
+	bottom: 2%;
+	right: 15%;
+	
+	color: #909345;
+	font-style: oblique;
+	text-decoration: underline;
+	text-shadow:
+		1px 1px 0px #D0D0D0;
+}
+
 .newsContent {}
+
+.newsQuestion {
+	padding-top: 30%;
+	padding-left: 5%;
+}
+
+.newsAnswer {
+	float: right;
+	padding-top: 35%;
+	padding-right: 10%;
+}
 
 .latestNewsTitle {
 	font-size: 200%;
@@ -116,12 +144,22 @@ a {
 
 .contentPane {
 	position: absolute;
+	overflow: auto;
 	top: 22%;
 	left: 55%;
 	width: 31.5%;
 	height: 70%;
 	font-size: 200%;
 	z-index: 1;
+}
+
+.albumPane {
+	position: absolute;
+	top: 50%;
+	left: 20%;
+	width: 25%;
+	height: 40%;
+	z-index: 2;
 }
 
 .miniflex {

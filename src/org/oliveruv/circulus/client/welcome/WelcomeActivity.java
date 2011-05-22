@@ -23,8 +23,8 @@ public class WelcomeActivity extends AbstractActivity  implements WelcomeView.Pr
 
 	@Override
 	public void start(AcceptsOneWidget panel, EventBus eventBus) {
-		view.setPresenter(this);
 		panel.setWidget(view.asWidget());
+		view.setPresenter(this);
 	}
 
 	@Override
