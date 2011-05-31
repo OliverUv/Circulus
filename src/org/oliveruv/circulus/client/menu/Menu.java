@@ -1,6 +1,7 @@
 package org.oliveruv.circulus.client.menu;
 
 import org.oliveruv.circulus.client.Constants;
+import org.oliveruv.circulus.client.ContentProvider;
 import org.oliveruv.circulus.client.bio.BioPlace;
 import org.oliveruv.circulus.client.discog.DiscogPlace;
 import org.oliveruv.circulus.client.live.LivePlace;
@@ -52,18 +53,20 @@ public class Menu extends Composite implements PlaceChangeEvent.Handler {
 
 	private final CirculusPlaceHistoryMapper mapper;
 	private final EventBus eventBus;
+	private final ContentProvider cp;
 
 	@Inject
 	public Menu(BundledResources resources, CirculusPlaceHistoryMapper mapper,
-			EventBus eventBus) {
+			EventBus eventBus, ContentProvider contentProvider) {
 		this.res = resources;
 		this.mapper = mapper;
 		this.eventBus = eventBus;
+		this.cp = contentProvider;
 		initWidget(uiBinder.createAndBindUi(this));
 
 		news.setTargetHistoryToken(mapper.getToken(new NewsPlace()));
 		bio.setTargetHistoryToken(mapper.getToken(new BioPlace()));
-		discog.setTargetHistoryToken(mapper.getToken(new DiscogPlace()));
+		discog.setTargetHistoryToken(mapper.getToken(new DiscogPlace(cp.getMostRecentAlbumName())));
 		live.setTargetHistoryToken(mapper.getToken(new LivePlace()));
 		media.setTargetHistoryToken(mapper.getToken(new MediaPlace()));
 

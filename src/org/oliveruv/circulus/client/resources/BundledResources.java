@@ -13,7 +13,8 @@ public interface BundledResources extends ClientBundle {
 		String backgroundImage();
 		String menuPane();
 		
-		String albumPane();
+		String albumsPane();
+		String currentAlbumPane();
 		
 		String miniflex();
 		String active();

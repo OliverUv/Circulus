@@ -6,6 +6,7 @@ import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.ui.Widget;
 
 public class ReleaseItem {
+	private String key;
 	private String name;
 	private int year;
 	private String label;
@@ -17,13 +18,22 @@ public class ReleaseItem {
 	private ArrayList<ReleaseTrack> tracks;
 	
 	
-	public ReleaseItem(String name, int year, String label, String releaseType, ImageResource albumCover) {
+	public ReleaseItem(String key, String name, int year, String label, String releaseType, ImageResource albumCover) {
 		super();
+		this.key = key;
 		this.name = name;
 		this.year = year;
 		this.label = label;
 		this.releaseType = releaseType;
 		this.albumCover = albumCover;
+	}
+
+	public String getKey() {
+		return key;
+	}
+
+	public void setKey(String key) {
+		this.key = key;
 	}
 
 	public String getName() {

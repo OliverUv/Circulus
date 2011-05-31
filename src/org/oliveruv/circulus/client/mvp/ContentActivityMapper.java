@@ -31,7 +31,7 @@ public class ContentActivityMapper implements ActivityMapper {
 
 	private final Provider<NewsActivity> newsActivityProvider;
 	private final BioActivity bioActivity;
-	private final DiscogActivity discogActivity;
+	private final Provider<DiscogActivity> discogActivityProvider;
 	private final LiveActivity liveActivity;
 	private final MediaActivity mediaActivity;
 	private final WelcomeActivity welcomeActivity;
@@ -45,7 +45,9 @@ public class ContentActivityMapper implements ActivityMapper {
 		} else if (place instanceof BioPlace) {
 			return bioActivity;
 		} else if (place instanceof DiscogPlace) {
-			return discogActivity;
+			DiscogActivity da = discogActivityProvider.get();
+			da.initialize((DiscogPlace) place);
+			return da;
 		} else if (place instanceof LivePlace) {
 			return liveActivity;
 		} else if (place instanceof MediaPlace) {
@@ -58,13 +60,13 @@ public class ContentActivityMapper implements ActivityMapper {
 
 	@Inject
 	public ContentActivityMapper(Provider<NewsActivity> newsActivityProvider,
-			BioActivity bioActivity, DiscogActivity discogActivity,
+			BioActivity bioActivity, Provider<DiscogActivity> discogActivityProvider,
 			LiveActivity liveActivity, MediaActivity mediaActivity,
 			WelcomeActivity welcomeActivity) {
 		super();
 		this.newsActivityProvider = newsActivityProvider;
 		this.bioActivity = bioActivity;
-		this.discogActivity = discogActivity;
+		this.discogActivityProvider = discogActivityProvider;
 		this.liveActivity = liveActivity;
 		this.mediaActivity = mediaActivity;
 		this.welcomeActivity = welcomeActivity;

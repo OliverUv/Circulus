@@ -29,7 +29,7 @@ public class ContentProvider {
 	}
 
 	private HashMap<String, ReleaseItem> getReleases() {
-		ReleaseItem giantism = new ReleaseItem("Giantism", 1999, "Instant Farma", "EP", res.giantism());
+		ReleaseItem giantism = new ReleaseItem("giantism", "Giantism", 1999, "Instant Farma", "EP", res.giantism());
 		ArrayList<ReleaseTrack> giantismTracks = new ArrayList<ReleaseTrack>();
 		giantismTracks.add(new ReleaseTrack(1, "Little Big Song", 5, 7));
 		giantismTracks.add(new ReleaseTrack(2, "The True Lover's Farewell", 3, 54));
@@ -39,7 +39,7 @@ public class ContentProvider {
 		giantismTracks.add(new ReleaseTrack(6, "All You People", 9, 14));
 		giantism.setTracks(giantismTracks);
 		
-		ReleaseItem lick = new ReleaseItem("The Lick on the Tip of an Envelope Yet to Be Sent", 2005, "Rise Above Records", "Album", res.lick());
+		ReleaseItem lick = new ReleaseItem("lick", "The Lick on the Tip of an Envelope Yet to Be Sent", 2005, "Rise Above Records", "Album", res.lick());
 		ArrayList<ReleaseTrack> lickTracks = new ArrayList<ReleaseTrack>();
 		lickTracks.add(new ReleaseTrack(1, "Miri It Is", 2, 36));
 		lickTracks.add(new ReleaseTrack(2, "My Body Is Made of Sunlight", 3, 54));
@@ -58,7 +58,7 @@ public class ContentProvider {
 		lick.setReviewUrls(lickReviews);
 		
 		
-		ReleaseItem clocks = new ReleaseItem("Clocks Are Like People", 2006, "Rise Above Records", "Album", res.clocks());
+		ReleaseItem clocks = new ReleaseItem("clocks", "Clocks Are Like People", 2006, "Rise Above Records", "Album", res.clocks());
 		ArrayList<ReleaseTrack> clocksTracks = new ArrayList<ReleaseTrack>();
 		clocksTracks.add(new ReleaseTrack(1, "Dragon's Dance", 3, 20));
 		clocksTracks.add(new ReleaseTrack(2, "Song of Our Despair", 4, 57));
@@ -75,7 +75,7 @@ public class ContentProvider {
 		clocksReviews.add("http://www.spiralearth.co.uk/reviews/clockpeople.asp");
 		clocks.setReviewUrls(clocksReviews);
 		
-		ReleaseItem thought = new ReleaseItem("Thought Becomes Reality", 2009, "Mythical Cake", "Album", res.thought());
+		ReleaseItem thought = new ReleaseItem("thought", "Thought Becomes Reality", 2009, "Mythical Cake", "Album", res.thought());
 		ArrayList<ReleaseTrack> thoughtTracks = new ArrayList<ReleaseTrack>();
 		thoughtTracks.add(new ReleaseTrack(1, "Transmuting Power", 4, 31));
 		thoughtTracks.add(new ReleaseTrack(2, "Fortunate Ones", 2, 57));
@@ -89,10 +89,10 @@ public class ContentProvider {
 		thoughtTracks.add(new ReleaseTrack(10, "Within You Is The Sun", 4, 30));
 		
 		HashMap<String, ReleaseItem> r = new HashMap<String, ReleaseItem>();
-		r.put("thought", thought);
-		r.put("clocks", clocks);
-		r.put("lick", lick);
-		r.put("gigantism", giantism);
+		r.put(thought.getKey(), thought);
+		r.put(clocks.getKey(), clocks);
+		r.put(lick.getKey(), lick);
+		r.put(giantism.getKey(), giantism);
 		return r;
 	}
 
@@ -203,5 +203,17 @@ public class ContentProvider {
 
 	public HashMap<String, ReleaseItem> getDiscography() {
 		return releases;
+	}
+
+	public String getMostRecentAlbumName() {
+		String albumName = "thought";
+		int age = 0;
+		for (ReleaseItem i : releases.values()) {
+			if (age == 0 || age > i.getYear()) {
+				albumName = i.getKey();
+				age = i.getYear();
+			}
+		}
+		return albumName;
 	}
 }
