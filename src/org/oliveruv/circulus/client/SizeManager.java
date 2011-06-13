@@ -14,62 +14,65 @@ import com.google.inject.Inject;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.Selector;
 import com.google.gwt.query.client.Selectors;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.Image;
+
 import static com.google.gwt.query.client.GQuery.*;
 import static com.google.gwt.query.client.css.CSS.*;
 
 
 class SizeManager implements ResizeHandler {
 	BundledResources 	resources;
-	double 				imageWidth;
-	double 				imageHeight;
-	double 				imageRatio;
-	String 				imageTagId = "#" + Constants.resizeTagId;
-	double				minimumSize = Constants.minimumSiteSize;
+	double 				canvasImageWidth;
+	double 				canvasImageHeight;
+	double 				canvasImageRatio;
+	String 				canvasImageTagId = "#" + Constants.resizeTagId;
+	double				canvasMinimumSize = Constants.minimumSiteSize;
 	
 	@Inject
 	SizeManager(BundledResources resources){
 		this.resources   = resources;
-		this.imageWidth  = (double) resources.background().getWidth();
-		this.imageHeight = (double) resources.background().getHeight();
-		this.imageRatio  = this.imageHeight / this.imageWidth;
+		this.canvasImageWidth  = (double) resources.background().getWidth();
+		this.canvasImageHeight = (double) resources.background().getHeight();
+		this.canvasImageRatio  = this.canvasImageHeight / this.canvasImageWidth;
 	}
 	
-	public void resizeImage(int screenWidth, int screenHeight) {
-		resizeImage((double) screenWidth, (double) screenHeight);
+	public void resizeCanvasImage(int screenWidth, int screenHeight) {
+		resizeCanvasImage((double) screenWidth, (double) screenHeight);
 	}
 	
-	public void resizeImage(double screenWidth, double screenHeight) {
+	public void resizeCanvasImage(double screenWidth, double screenHeight) {
 		
-		GQuery imageTag = $(imageTagId);
+		GQuery imageTag = $(canvasImageTagId);
 		
 		//Prevent image from being smaller than minimumSize
 		//Also means we won't divide by zero if width or height == 0 
-		if (screenWidth < minimumSize && screenHeight < minimumSize) {
-			resizeImage(minimumSize, minimumSize);
+		if (screenWidth < canvasMinimumSize && screenHeight < canvasMinimumSize) {
+			resizeCanvasImage(canvasMinimumSize, canvasMinimumSize);
 			centerImage(imageTag, screenWidth, screenHeight);
 			//make sure we center with the real widths and heights
 			return;
-		} else if (screenWidth < minimumSize) {
-			resizeImage(minimumSize, screenHeight);
+		} else if (screenWidth < canvasMinimumSize) {
+			resizeCanvasImage(canvasMinimumSize, screenHeight);
 			centerImage(imageTag, screenWidth, screenHeight);
 			return;
-		} else if (screenHeight < minimumSize) {
-			resizeImage(screenWidth, minimumSize);
+		} else if (screenHeight < canvasMinimumSize) {
+			resizeCanvasImage(screenWidth, canvasMinimumSize);
 			centerImage(imageTag, screenWidth, screenHeight);
 			return;
 		}	
 		
 		double screenRatio = screenHeight / screenWidth;
 		
-		if(screenRatio < imageRatio) {
+		if(screenRatio < canvasImageRatio) {
 			imageTag.height((int) screenHeight);
-			imageTag.width((int) (screenHeight / imageRatio));
-			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenHeight) / imageHeight)));
+			imageTag.width((int) (screenHeight / canvasImageRatio));
+			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenHeight) / canvasImageHeight)));
 			//log("1: ", screenRatio, screenHeight, screenWidth);
 		} else {
 			imageTag.width((int) screenWidth);
-			imageTag.height((int) (screenWidth * imageRatio));
-			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenWidth) / imageWidth)));
+			imageTag.height((int) (screenWidth * canvasImageRatio));
+			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenWidth) / canvasImageWidth)));
 			//log("2: ", screenRatio, screenHeight, screenWidth);
 		}
 
@@ -83,12 +86,27 @@ class SizeManager implements ResizeHandler {
 	
 	private void log(String branch, double screenRatio, double screenHeight, double screenWidth) {
 		GWT.log("Branch: " + branch + "\n" +
-				"Image h/w (" + imageHeight + "/" + imageWidth + ") = " + imageRatio +
+				"Image h/w (" + canvasImageHeight + "/" + canvasImageWidth + ") = " + canvasImageRatio +
 				"\nScreen h/w (" + screenHeight + "/" + screenWidth + ") = " + screenRatio);
 	}
 
 	@Override
 	public void onResize(ResizeEvent event) {
-		resizeImage(event.getWidth(), event.getHeight());
+		resizeCanvasImage(event.getWidth(), event.getHeight());
+	}
+	
+	// Takes a percentage size, to be interpreted as percent of the
+	// containing image. Sets the image's css size in pixels, so that
+	// it can still be used with relative positioning but still have
+	// absolute positioning-style heights.
+	public static void setImageHeight(Image image, double percentageHeight) {
+		int imageHeight = image.getHeight();
+		int imageWidth = image.getWidth();
+		
+		int screenHeight = Window.getClientHeight();
+		int screenWidth = Window.getClientWidth();
+		double screenRatio = screenHeight / screenWidth;
+		
+		
 	}
 }

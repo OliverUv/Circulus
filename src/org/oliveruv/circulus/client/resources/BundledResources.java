@@ -13,8 +13,12 @@ public interface BundledResources extends ClientBundle {
 		String backgroundImage();
 		String menuPane();
 		
-		String albumsPane();
-		String currentAlbumPane();
+		String albumPane();
+		//String albumImage();
+		String currentAlbumImage();
+		String albumOne();
+		String albumTwo();
+		String albumThree();
 		
 		String miniflex();
 		String active();
@@ -36,6 +40,7 @@ public interface BundledResources extends ClientBundle {
 		String contentTitle();
 		String contentText();
 		String latestNewsTitle();
+		
 	}
 	
 	@Source ("clocks.jpg")

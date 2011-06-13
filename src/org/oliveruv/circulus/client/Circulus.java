@@ -65,6 +65,6 @@ public class Circulus implements EntryPoint {
 	}
 	
 	private void initializeImageSize(SizeManager resizeHandler) {
-		resizeHandler.resizeImage(Window.getClientWidth(), Window.getClientHeight());
+		resizeHandler.resizeCanvasImage(Window.getClientWidth(), Window.getClientHeight());
 	}
 }

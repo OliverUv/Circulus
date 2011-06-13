@@ -1,18 +1,27 @@
 package org.oliveruv.circulus.client.discog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.oliveruv.circulus.client.mvp.CirculusPlaceHistoryMapper;
 import org.oliveruv.circulus.client.resources.BundledResources;
 import org.oliveruv.circulus.shared.ReleaseItem;
 
+import com.google.gwt.dom.client.Element;
+import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Image;
+import com.google.gwt.user.client.ui.IsWidget;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 public class DiscogViewImpl extends Composite implements DiscogView {
@@ -21,11 +30,10 @@ public class DiscogViewImpl extends Composite implements DiscogView {
 	private BundledResources res;
 	private FlowPanel panel = new FlowPanel();
 	private FlowPanel contentPanel = new FlowPanel();
-	private FlowPanel currentAlbumPanel = new FlowPanel();
-	private FlowPanel albumsPanel = new FlowPanel();
+	private FlowPanel albumPanel = new FlowPanel();
 	private HashMap<String, ReleaseItem> albumMap = null;
-	private HashMap<String, Image> imageMap = null;
-	private HashMap<String, Hyperlink> linkMap = null;
+	private HashMap<String, Element> imageMap = null;
+	private ArrayList<String> albumPositions = new ArrayList<String>();
 	private CirculusPlaceHistoryMapper mapper;
 	
 	@Override
@@ -35,7 +43,7 @@ public class DiscogViewImpl extends Composite implements DiscogView {
 			
 			//Initialize
 			albumMap = discogActivity.getDiscog();
-			createImagesLinks();
+			createImagesAndLinks();
 			
 			arrangeLinks(discogActivity.getCurrentAlbum());
 			setContent(albumMap.get(discogActivity.getCurrentAlbum()));
@@ -53,47 +61,64 @@ public class DiscogViewImpl extends Composite implements DiscogView {
 		res = resources;
 		this.mapper = mapper;
 		contentPanel.setStyleName(res.css().contentPane());
-		albumsPanel.setStyleName(res.css().albumsPane());
-		currentAlbumPanel.setStyleName(res.css().currentAlbumPane());
+		albumPanel.setStyleName(res.css().albumPane());
 		
+		albumPositions.add(res.css().albumOne());
+		albumPositions.add(res.css().albumTwo());
+		albumPositions.add(res.css().albumThree());
 		
 		setContent(null);
 		
 		panel.add(contentPanel);
-		panel.add(albumsPanel);
-		panel.add(currentAlbumPanel);
+		panel.add(albumPanel);
 		
 		initWidget(panel);
 	}
 
 	private void arrangeLinks(String currentAlbum) {
-		albumsPanel.clear();
-		currentAlbumPanel.clear();
+		albumPanel.clear();
 		
-		for(Map.Entry<String, Hyperlink> i : linkMap.entrySet()) {
-			if (i.getKey() != currentAlbum)
-				albumsPanel.add(i.getValue());
+		int n = 0;
+		int albumsWithLinks = albumMap.containsKey(currentAlbum) ? albumMap.size() -1 : albumMap.size();
+		for(Map.Entry<String, ReleaseItem> i : albumMap.entrySet()) {
+			if (! i.getKey().equals(currentAlbum)) {
+				addAlbumLink(i.getValue(), n, albumsWithLinks);
+				n++;
+			}
 		}
 		
-		Image i = imageMap.get(currentAlbum);
-		i.setSize("auto", "30%");
-		currentAlbumPanel.add(i);
+		//Add current album
+		if (imageMap.containsKey(currentAlbum))
+			albumPanel.add(new HTML(imageMap.get(currentAlbum).getString()));
 	}
 
-	private void createImagesLinks() {
-		imageMap = new HashMap<String, Image>();
-		linkMap = new HashMap<String, Hyperlink>();
+	private void addAlbumLink(ReleaseItem album, int linkInSeries, int totalInSeries) {
+		if (linkInSeries >= albumPositions.size())
+			return;
 		
-		for(ReleaseItem i : albumMap.values()) {
-			Image image = new Image(i.getAlbumCover());
-			image.setAltText(i.getName());
-			image.setSize("auto", "15%");
-			imageMap.put(i.getKey(), image);
-		}
+		albumPanel.add(createImageLink(album, albumPositions.get(linkInSeries)));
+	}
+	
+	private Hyperlink createImageLink(ReleaseItem album, String cssClassName) {
+		Element img = DOM.createImg();
+		img.setClassName(cssClassName);
+		img.setAttribute("alt", album.getName());
+		img.setAttribute("src", album.getAlbumCover().getURL());
 		
+		Hyperlink l = new Hyperlink(img.getString(), true, mapper.getToken(new DiscogPlace(album.getKey())));
+		return l;
+	}
+
+	private void createImagesAndLinks() {
+		imageMap = new HashMap<String, Element>();
+
 		for(ReleaseItem i : albumMap.values()) {
-			Hyperlink l = new Hyperlink(imageMap.get(i.getKey()).getElement().getString(), true, mapper.getToken(new DiscogPlace(i.getKey())));
-			linkMap.put(i.getKey(), l);
+			Element img = DOM.createImg();
+			img.setClassName(res.css().currentAlbumImage());
+			img.setAttribute("alt", i.getName());
+			img.setAttribute("src", i.getAlbumCover().getURL());
+			
+			imageMap.put(i.getKey(), img);
 		}
 	}
 	
