@@ -1,24 +1,39 @@
 package org.oliveruv.circulus.client.live;
 
+import org.oliveruv.circulus.client.resources.BundledResources;
+
 import com.google.gwt.user.client.ui.Composite;
+import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.SimplePanel;
+import com.google.inject.Inject;
 
 public class LiveViewImpl extends Composite implements LiveView {
 
 	private Presenter liveActivity;
-	private Label label = new Label("No news yet!");
+	private BundledResources res;
+	private FlowPanel panel = new FlowPanel();
 	
 	@Override
 	public void setPresenter(Presenter presenter) {
 		liveActivity = presenter;
-		label.setText(liveActivity.getLiveInfo());
+
+		panel.clear();
+		
+		Label title = new Label("Performing for all, the Kingly.");
+		title.setStyleName(res.css().contentTitle());
+		panel.add(title);
+		
+		Label l = new Label("Circulus is currently in the creative process. Keep a lookout here to see us a live.");
+		l.setStyleName(res.css().contentText());
+		panel.add(l);
 	}
 
-	public LiveViewImpl() {
+	@Inject
+	public LiveViewImpl(BundledResources resources) {
 		super();
-		SimplePanel panel = new SimplePanel();
-		panel.add(label);
+		this.res = resources;
+		panel.setStyleName(res.css().contentPane());
 		initWidget(panel);
 	}
 }

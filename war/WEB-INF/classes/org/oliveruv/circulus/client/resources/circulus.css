@@ -2,16 +2,7 @@
 
 @def LINK_HEIGHT 1%;
 
-@url fertigoUrl fertigo;
-
-/*literal("@font-face
-{
-	font-family: Meddon;
-	src: fertigoUrl format("opentype");
-}");*/
-
 body {background:#000000;}
-
 
 a img {
 	border: none;	
@@ -87,6 +78,68 @@ a {
 		0px 0px 10px #FFF;
 		
 	padding-top: 2%;
+}
+
+.discogTrack {
+	color: #333;
+	font-family:
+    	georgia,		/* Windows, MacOS */
+						/* Fallback options */
+    	times,			/* Unix+X, MacOS */
+    	serif;
+	text-shadow:
+		0px 0px 5px #FFF,
+		0px 0px 7px #FFF,
+		0px 0px 10px #FFF;
+		
+	/*padding-top: 2%;*/
+	font-size: 80%;
+	padding-left: 4.5%;
+}
+
+.discogInfo {
+	color: #666;
+	font-family:
+    	georgia,		/* Windows, MacOS */
+						/* Fallback options */
+    	times,			/* Unix+X, MacOS */
+    	serif;
+	text-shadow:
+		0px 0px 5px #FFF,
+		0px 0px 7px #FFF,
+		0px 0px 10px #FFF;
+		
+	padding-top: 3%;
+	padding-bottom: 1%;
+	font-size: 95%;
+}
+
+.discogReview {
+	color: #909345;
+	font-style: oblique;
+	text-decoration: underline;
+	text-shadow:
+		1px 1px 0px #D0D0D0,
+		0px 0px 5px #FFF,
+		0px 0px 7px #FFF,
+		0px 0px 10px #FFF;
+	font-size: 95%;
+	padding-left: 4.5%;
+}
+
+.mediaItem {
+	/*position: absolute;*/
+	color: #909345;
+	font-style: oblique;
+	text-decoration: underline;
+	text-shadow:
+		1px 1px 0px #D0D0D0,
+		0px 0px 5px #FFF,
+		0px 0px 7px #FFF,
+		0px 0px 10px #FFF;
+	font-size: 130%;
+	padding-top: 8%;
+	padding-left: 13%;
 }
 
 .newsAuthor {

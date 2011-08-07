@@ -14,7 +14,6 @@ public interface BundledResources extends ClientBundle {
 		String menuPane();
 		
 		String albumPane();
-		//String albumImage();
 		String currentAlbumImage();
 		String albumOne();
 		String albumTwo();
@@ -41,18 +40,23 @@ public interface BundledResources extends ClientBundle {
 		String contentText();
 		String latestNewsTitle();
 		
+		String discogTrack();
+		String discogInfo();
+		String discogReview();
+		String mediaItem();
+		
 	}
 	
-	@Source ("clocks.jpg")
+	@Source ("clocks.png")
 	public ImageResource clocks();
 	
-	@Source ("giantism.jpg")
+	@Source ("giantism.png")
 	public ImageResource giantism();
 	
-	@Source ("lick.jpg")
+	@Source ("lick.png")
 	public ImageResource lick();
 	
-	@Source ("thought.jpg")
+	@Source ("thought.png")
 	public ImageResource thought();
 
 	@Source ("newscan-bg.jpg")
@@ -72,7 +76,4 @@ public interface BundledResources extends ClientBundle {
 
 	@Source ("circulus.css")
 	public CirculusCssResource css();
-	
-	@Source ("Fertigo_PRO.otf")
-	public DataResource fertigo();
 }

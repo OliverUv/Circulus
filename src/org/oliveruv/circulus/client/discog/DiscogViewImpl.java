@@ -8,9 +8,11 @@ import java.util.Map;
 import org.oliveruv.circulus.client.mvp.CirculusPlaceHistoryMapper;
 import org.oliveruv.circulus.client.resources.BundledResources;
 import org.oliveruv.circulus.shared.ReleaseItem;
+import org.oliveruv.circulus.shared.ReleaseTrack;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
+import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
@@ -133,6 +135,36 @@ public class DiscogViewImpl extends Composite implements DiscogView {
 			Label title = new Label(album.getName());
 			title.setStyleName(res.css().contentTitle());
 			contentPanel.add(title);
+			
+			String info = album.getReleaseType() + " on " + album.getLabel() + ", " + album.getYear();
+			Label infoLabel = new Label(info);
+			infoLabel.setStyleName(res.css().discogInfo());
+			contentPanel.add(infoLabel);
+			
+			for(ReleaseTrack t : album.getTracks()) {
+				String track = t.getName() + ", " + t.getMinutes() + ":" + t.getSeconds();
+				if (t.getFeaturing() != null && t.getFeaturing() != "")
+					track += ", feat. " + t.getFeaturing();
+				Label trackLabel = new Label(track);
+				trackLabel.setStyleName(res.css().discogTrack());
+				contentPanel.add(trackLabel);
+			}
+			
+			List<String> reviewUrls = album.getReviewUrls();
+			if (reviewUrls == null || reviewUrls.isEmpty())
+				return;
+			
+			Label reviewHeader = new Label("Reviews");
+			reviewHeader.setStyleName(res.css().discogInfo());
+			contentPanel.add(reviewHeader);
+			
+			int i = 1;
+			for(String url : reviewUrls) {
+				Anchor a = new Anchor("#"+i,url);
+				a.setStyleName(res.css().discogReview());
+				contentPanel.add(a);
+				i++;
+			}
 		}
 	}
 }

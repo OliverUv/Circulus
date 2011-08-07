@@ -66,7 +66,7 @@ public class ContentProvider {
 		clocksTracks.add(new ReleaseTrack(4, "Wherever She Goes", 4, 18));
 		clocksTracks.add(new ReleaseTrack(5, "Velocity Races", 4, 3));
 		clocksTracks.add(new ReleaseTrack(6, "To the Fields", 3, 22));
-		clocksTracks.add(new ReleaseTrack(7, "Bourée", 3, 17));
+		clocksTracks.add(new ReleaseTrack(7, "Bouree", 3, 17));
 		clocksTracks.add(new ReleaseTrack(8, "This Is the Way", 5, 34));
 		clocksTracks.add(new ReleaseTrack(9, "Reality's a Fantasy", 8, 22));
 		clocks.setTracks(clocksTracks);
@@ -87,6 +87,11 @@ public class ContentProvider {
 		thoughtTracks.add(new ReleaseTrack(8, "Tristans Laments", 4, 9));
 		thoughtTracks.add(new ReleaseTrack(9, "Kalenda Maya", 4, 17));
 		thoughtTracks.add(new ReleaseTrack(10, "Within You Is The Sun", 4, 30));
+		thought.setTracks(thoughtTracks);
+		
+		ArrayList<String> thoughtReviews = new ArrayList<String>();
+		thoughtReviews.add("http://strangeglue.com/reviews/circulus-thought-becomes-reality");
+		thought.setReviewUrls(thoughtReviews);
 		
 		HashMap<String, ReleaseItem> r = new HashMap<String, ReleaseItem>();
 		r.put(thought.getKey(), thought);
@@ -99,21 +104,9 @@ public class ContentProvider {
 	private ArrayList<NewsItem> getNews() {
 		ArrayList<NewsItem> items = new ArrayList<NewsItem>();
 		items.add(new NewsItem(
-				new Date(2011, 05, 12),
+				new Date(2011, 8, 07),
 				"Oliver Uvman",
-				"Hey! I made this site. Now it's up and running! Hope y'all like it!"));
-		items.add(new NewsItem(
-				new Date(2011, 05, 11),
-				"Oliver Uvman",
-				"This news thingie is just here to test some stuff out! Can you imagine? Me neither."));
-		items.add(new NewsItem(
-				new Date(2011, 05, 10),
-				"Oliver Uvman",
-				"The things I do! Writing on keyboards, making tiny lights turn different colours. When the colours are just right, I am convinced that I have helped other humans, and I am happy."));
-		items.add(new NewsItem(
-				new Date(2011, 05, 9),
-				"Oliver Uvman",
-				"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."));
+				"Finally! We've managed to resume communications with the world. The web sight is up. Hope you like it!"));
 		return items;
 	}
 	
@@ -167,7 +160,7 @@ public class ContentProvider {
 		greetingText2.setStyleName(res.css().contentText());
 		p.add(greetingText2);
 
-		Label greetingText3 = new Label("Our aim is to bring you fresh vibrations as often as we can. Please download the free music we have for you.");
+		Label greetingText3 = new Label("Our aim is to bring you fresh vibrations as often as we can. Soon, we'll have some free music for you to download.");
 		greetingText3.setStyleName(res.css().contentText());
 		p.add(greetingText3);
 		
