@@ -43,8 +43,9 @@ a {
 	color: #d1d195;
 	
 	text-shadow:
+		-1px -1px 0px #40410d,
 		1px 1px 0px #43442d,
-		2px 2px 1px #f0f09a;
+		2px 2px 2px #f0f09a;
 }
 @if user.agent ie6 ie8 {
 	.menuPane {
@@ -287,12 +288,13 @@ a {
 	width: auto;
 }
 
-.wikiImage {
+.fbImage {
 	position: absolute;
 	top: LINK_HEIGHT;
 	left: 1.5%;
 	height: auto;
 	width: 5%;
+	opacity: .85;
 }
 
 .lastfmImage {
@@ -301,14 +303,25 @@ a {
 	left: 7.5%;
 	height: auto;
 	width: 5%;
+	opacity: .85;
 }
 
-.fbImage {
+.wikiImage {
 	position: absolute;
 	top: LINK_HEIGHT;
 	left: 13.5%;
 	height: auto;
 	width: 5%;
+	opacity: .85;
+}
+
+.youtubeImage {
+	position: absolute;
+	top: LINK_HEIGHT;
+	left: 19.5%;
+	height: auto;
+	width: 5%;
+	opacity: .85;
 }
 
 .pixies {

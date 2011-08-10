@@ -3,8 +3,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" output="test-classes" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT"/>
-	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gwtquery-1.0.0-SNAPSHOT-2.2.0.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/gin-1.5-post-gwt-2.2.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/guice-3.0-rc3.jar"/>
@@ -17,6 +15,7 @@
 			<attribute name="optional" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER/GWT (2)"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER/App Engine (2)"/>
 	<classpathentry kind="output" path="war/WEB-INF/classes"/>
 </classpath>

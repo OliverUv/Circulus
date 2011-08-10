@@ -28,6 +28,7 @@ public interface BundledResources extends ClientBundle {
 		String wikiImage();
 		String lastfmImage();
 		String fbImage();
+		String youtubeImage();
 		
 		String newsDate();
 		String newsContent();
@@ -61,6 +62,9 @@ public interface BundledResources extends ClientBundle {
 
 	@Source ("newscan-bg.jpg")
 	public ImageResource background();
+	
+	@Source ("youtubebutton.png")
+	public ImageResource youtubeImage();
 	
 	@Source ("fbbutton.png")
 	public ImageResource fbImage();

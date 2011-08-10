@@ -111,6 +111,14 @@ public class StaticContent {
 						"http://www.facebook.com/pages/Circulus/109390525753763"
 				));
 		
+		imageLinks.add(
+				createImageLink(
+						injector.getResources().youtubeImage(),
+						injector.getResources().css().youtubeImage(),
+						"Circulus on YouTube", true,
+						"http://www.youtube.com/results?search_query=circulus"
+				));
+		
 		return imageLinks;
 	}
 
