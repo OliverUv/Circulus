@@ -1,10 +1,14 @@
 package org.oliveruv.circulus.client.media;
 
+import java.util.HashMap;
+
 import org.oliveruv.circulus.client.ContentProvider;
+import org.oliveruv.circulus.shared.Ukuria;
 
 import com.google.gwt.activity.shared.AbstractActivity;
 import com.google.gwt.event.shared.EventBus;
 import com.google.gwt.user.client.ui.AcceptsOneWidget;
+import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 public class MediaActivity extends AbstractActivity  implements MediaView.Presenter {
@@ -12,12 +16,19 @@ public class MediaActivity extends AbstractActivity  implements MediaView.Presen
 	MediaView view;
 	
 	private final ContentProvider contentProvider;
+	public String currentUkuria;
 	
 	@Inject
 	public MediaActivity(MediaView view, ContentProvider contentProvider) {
 		super();
 		this.view = view;
 		this.contentProvider = contentProvider;
+		currentUkuria = "";
+	}
+	
+	@Override
+	public String getCurrentUkuria() {
+		return currentUkuria;
 	}
 
 	@Override
@@ -31,8 +42,12 @@ public class MediaActivity extends AbstractActivity  implements MediaView.Presen
 		this.view = view;
 	}
 
+	public void initialize(MediaPlace place) {
+		currentUkuria = place.getUkuria();
+	}
+
 	@Override
-	public String getMediaInfo() {
-		return "Let's head down to the mediaterranean oceans!";
+	public HashMap<String, Ukuria> getUkuria() {
+		return contentProvider.getUkuria();
 	}
 }

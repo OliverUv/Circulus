@@ -10,7 +10,7 @@
     	<li><g:Hyperlink ui:field="bio">Bio</g:Hyperlink></li>
     	<li><g:Hyperlink ui:field="discog">Discog</g:Hyperlink></li>
     	<li><g:Hyperlink ui:field="live">Live</g:Hyperlink></li>
-    	<li><g:Hyperlink ui:field="media">Media</g:Hyperlink></li>
+    	<li><g:Hyperlink ui:field="media">Ukuria</g:Hyperlink></li>
     </ul>
    
   </g:HTMLPanel>

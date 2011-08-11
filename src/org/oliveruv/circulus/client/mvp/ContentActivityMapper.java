@@ -33,7 +33,7 @@ public class ContentActivityMapper implements ActivityMapper {
 	private final BioActivity bioActivity;
 	private final Provider<DiscogActivity> discogActivityProvider;
 	private final LiveActivity liveActivity;
-	private final MediaActivity mediaActivity;
+	private final Provider<MediaActivity> mediaActivityProvider;
 	private final WelcomeActivity welcomeActivity;
 	
 	@Override
@@ -42,18 +42,26 @@ public class ContentActivityMapper implements ActivityMapper {
 			NewsActivity na = newsActivityProvider.get();
 			na.initialize((NewsPlace) place);
 			return na;
+			
 		} else if (place instanceof BioPlace) {
 			return bioActivity;
+			
 		} else if (place instanceof DiscogPlace) {
 			DiscogActivity da = discogActivityProvider.get();
 			da.initialize((DiscogPlace) place);
 			return da;
+			
 		} else if (place instanceof LivePlace) {
 			return liveActivity;
+			
 		} else if (place instanceof MediaPlace) {
-			return mediaActivity;
+			MediaActivity ma = mediaActivityProvider.get();
+			ma.initialize((MediaPlace) place);
+			return ma;
+			
 		} else if (place instanceof WelcomePlace) {
 			return welcomeActivity;
+			
 		}
 		return null;
 	}
@@ -61,14 +69,14 @@ public class ContentActivityMapper implements ActivityMapper {
 	@Inject
 	public ContentActivityMapper(Provider<NewsActivity> newsActivityProvider,
 			BioActivity bioActivity, Provider<DiscogActivity> discogActivityProvider,
-			LiveActivity liveActivity, MediaActivity mediaActivity,
+			LiveActivity liveActivity, Provider<MediaActivity> mediaActivityProvider,
 			WelcomeActivity welcomeActivity) {
 		super();
 		this.newsActivityProvider = newsActivityProvider;
 		this.bioActivity = bioActivity;
 		this.discogActivityProvider = discogActivityProvider;
 		this.liveActivity = liveActivity;
-		this.mediaActivity = mediaActivity;
+		this.mediaActivityProvider = mediaActivityProvider;
 		this.welcomeActivity = welcomeActivity;
 	}
 }

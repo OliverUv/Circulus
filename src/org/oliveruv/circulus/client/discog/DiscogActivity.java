@@ -16,17 +16,13 @@ public class DiscogActivity extends AbstractActivity  implements DiscogView.Pres
 
 	DiscogView view;
 	private final ContentProvider contentProvider;
-	private final BundledResources res;
-	private final CirculusPlaceHistoryMapper mapper;
 	public String currentAlbum;
 	
 	@Inject
-	public DiscogActivity(DiscogView view, ContentProvider contentProvider, BundledResources resources, CirculusPlaceHistoryMapper mapper) {
+	public DiscogActivity(DiscogView view, ContentProvider contentProvider) {
 		super();
 		this.view = view;
 		this.contentProvider = contentProvider;
-		this.res = resources;
-		this.mapper = mapper;
 		currentAlbum = "";
 	}
 	

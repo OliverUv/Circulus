@@ -68,7 +68,7 @@ public class Menu extends Composite implements PlaceChangeEvent.Handler {
 		bio.setTargetHistoryToken(mapper.getToken(new BioPlace()));
 		discog.setTargetHistoryToken(mapper.getToken(new DiscogPlace(cp.getMostRecentAlbumName())));
 		live.setTargetHistoryToken(mapper.getToken(new LivePlace()));
-		media.setTargetHistoryToken(mapper.getToken(new MediaPlace()));
+		media.setTargetHistoryToken(mapper.getToken(new MediaPlace("")));
 
 		// Register to history changed events
 		eventBus.addHandler(PlaceChangeEvent.TYPE, this);
@@ -92,7 +92,6 @@ public class Menu extends Composite implements PlaceChangeEvent.Handler {
 	}
 
 	private void setActive(Hyperlink link) {
-		//link.addStyleName(res.css().active());
 		Element a = link.getElement().getFirstChildElement();
 		a.addClassName(res.css().active());
 	}
@@ -101,15 +100,8 @@ public class Menu extends Composite implements PlaceChangeEvent.Handler {
 		Element a = link.getElement().getFirstChildElement();
 		a.removeClassName(res.css().active());
 	}
-	
 
 	private void removeActivityIndicator() {
-		/*String css = res.css().active();
-		news.removeStyleName(css);
-		bio.removeStyleName(css);
-		discog.removeStyleName(css);
-		live.removeStyleName(css);
-		media.removeStyleName(css);*/
 		removeActive(news);
 		removeActive(bio);
 		removeActive(discog);

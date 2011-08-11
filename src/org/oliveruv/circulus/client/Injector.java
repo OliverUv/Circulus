@@ -16,6 +16,7 @@
 
 package org.oliveruv.circulus.client;
 
+import org.oliveruv.circulus.client.media.MediaActivity;
 import org.oliveruv.circulus.client.menu.Menu;
 import org.oliveruv.circulus.client.mvp.CirculusPlaceHistoryMapper;
 import org.oliveruv.circulus.client.news.NewsPlace;
@@ -55,4 +56,6 @@ public interface Injector extends Ginjector {
 	StaticContent getStaticContent();
 	
 	NewsActivity getNewsActivity();
+	
+	MediaActivity getMediaActivity();
 }

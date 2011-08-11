@@ -44,8 +44,11 @@ public interface BundledResources extends ClientBundle {
 		String discogTrack();
 		String discogInfo();
 		String discogReview();
-		String mediaItem();
 		
+		String mediaItem();
+		String mediaText();
+		String mediaTextIndent();
+		String mediaIndentation();
 	}
 	
 	@Source ("clocks.png")

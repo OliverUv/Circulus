@@ -98,7 +98,7 @@ public class Module extends AbstractGinModule {
 		bind(LiveView.class).to(LiveViewImpl.class).in(Singleton.class);
 
 		bind(MediaPlace.class).in(Singleton.class);
-		bind(MediaActivity.class).in(Singleton.class);
+		bind(MediaActivity.class);
 		bind(MediaView.class).to(MediaViewImpl.class).in(Singleton.class);
 
 		bind(WelcomePlace.class).in(Singleton.class);

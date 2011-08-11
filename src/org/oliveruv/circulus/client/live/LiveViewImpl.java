@@ -27,6 +27,10 @@ public class LiveViewImpl extends Composite implements LiveView {
 		Label l = new Label("Circulus is currently in the creative process. Keep a lookout here to see us a live.");
 		l.setStyleName(res.css().contentText());
 		panel.add(l);
+		
+		l = new Label("Seek us on Ireland, by some festivus in October. More info soon-ish.");
+		l.setStyleName(res.css().contentText());
+		panel.add(l);
 	}
 
 	@Inject
