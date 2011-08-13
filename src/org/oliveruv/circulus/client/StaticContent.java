@@ -60,7 +60,7 @@ public class StaticContent {
 		$("#"+ Constants.resizeTagId).append(
 				"<div class=\"" +
 				injector.getResources().css().copyright() +
-				"\"/><a href=\"http://www.github.com/OliverUv/Circulus/blob/master/COPYRIGHT\">Copyrights etc, don't be a dick.</a>"
+				"\"/><a href=\"http://www.github.com/OliverUv/Circulus/blob/master/COPYRIGHT\">Copyrights etc, don't be a knave.</a>"
 				);
 		
 		//Add title link image

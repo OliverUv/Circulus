@@ -25,5 +25,8 @@
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
   <source path='shared'/>
+  
+  <!-- Some configuration doops -->
+  <set-configuration-property name='UiBinder.useSafeHtmlTemplates' value='true' />
 
 </module>
