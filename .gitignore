@@ -1,2 +1,5 @@
 #ignore output directory
 war/circulus/
+war/WEB-INF/classes
+war/WEB-INF/deploy
+.gwt
