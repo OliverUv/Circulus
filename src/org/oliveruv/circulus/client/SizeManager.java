@@ -68,12 +68,10 @@ class SizeManager implements ResizeHandler {
 			imageTag.height((int) screenHeight);
 			imageTag.width((int) (screenHeight / canvasImageRatio));
 			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenHeight) / canvasImageHeight)));
-			//log("1: ", screenRatio, screenHeight, screenWidth);
 		} else {
 			imageTag.width((int) screenWidth);
 			imageTag.height((int) (screenWidth * canvasImageRatio));
 			imageTag.css(CSS.FONT_SIZE.with(Length.pct((100 * screenWidth) / canvasImageWidth)));
-			//log("2: ", screenRatio, screenHeight, screenWidth);
 		}
 
 		centerImage(imageTag, screenWidth, screenHeight);
@@ -106,7 +104,5 @@ class SizeManager implements ResizeHandler {
 		int screenHeight = Window.getClientHeight();
 		int screenWidth = Window.getClientWidth();
 		double screenRatio = screenHeight / screenWidth;
-		
-		
 	}
 }

@@ -11,6 +11,7 @@ import com.google.gwt.activity.shared.ActivityManager;
 import com.google.gwt.activity.shared.ActivityMapper;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -44,6 +45,16 @@ public class Circulus implements EntryPoint {
 	private SimplePanel contentContainer = new SimplePanel();
 
 	public void onModuleLoad() {
+		GWT.setUncaughtExceptionHandler(new LoggingExceptionHandler());
+		Scheduler.get().scheduleDeferred(new Scheduler.ScheduledCommand() {
+			@Override
+			public void execute() {
+				startApplication();
+			}
+		});
+	}
+	
+	private void startApplication() {
 		//Set up MVP
 		PlaceHistoryHandler phh = injector.getPlaceHistoryHandler();
 		

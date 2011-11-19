@@ -1,6 +1,5 @@
 package org.oliveruv.circulus.client;
 
-import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,6 +11,7 @@ import com.google.gwt.user.client.ui.Widget;
 import com.google.inject.Inject;
 
 import org.oliveruv.circulus.client.resources.BundledResources;
+import org.oliveruv.circulus.shared.Date;
 import org.oliveruv.circulus.shared.NewsItem;
 import org.oliveruv.circulus.shared.ReleaseItem;
 import org.oliveruv.circulus.shared.ReleaseTrack;
@@ -23,13 +23,29 @@ public class ContentProvider {
 	private ArrayList<NewsItem> newsItems;
 	private HashMap<String, ReleaseItem> releases;
 	private HashMap<String, Ukuria> ukuria;
+	private ArrayList<NewsItem> liveActs;
 
 	@Inject
 	public ContentProvider(BundledResources res) {
 		this.res = res;
+		this.liveActs = generateLiveActs();
 		this.newsItems = getNews();
 		this.releases = getReleases();
 		this.ukuria = generateUkuria();
+	}
+
+	private ArrayList<NewsItem> generateLiveActs() {
+		ArrayList<NewsItem> items = new ArrayList<NewsItem>();
+		items.add(new NewsItem(
+				new Date(2011, 12, 6),
+				"",
+				"Glastonbury Assembly Rooms, Glastonbury. 8pm."));
+		items.add(new NewsItem(
+				new Date(2011, 12, 16),
+				"",
+				"All Services Club, Moseley, Birmingham. 8pm."));
+		
+		return items;
 	}
 
 	private HashMap<String, Ukuria> generateUkuria() {
@@ -195,9 +211,9 @@ public class ContentProvider {
 	private ArrayList<NewsItem> getNews() {
 		ArrayList<NewsItem> items = new ArrayList<NewsItem>();
 		items.add(new NewsItem(
-				new Date(2011, 8, 10),
+				new Date(2011, 11, 19),
 				"Oliver Uvman",
-				"Updated some visual parts of the site. We've opened the door for wisdoms from Ukuria, blessed."));
+				"Updated some visual parts of the site. We've opened the door for wisdoms from Ukuria, blessed. New live events listed."));
 		items.add(new NewsItem(
 				new Date(2011, 8, 07),
 				"Oliver Uvman",
@@ -235,6 +251,15 @@ public class ContentProvider {
 	
 	public boolean hasNewsItem(int indexNumber) {
 		return newsItems.size() > indexNumber;
+	}
+	
+	public List<Widget> getLiveActs() {
+		List<Widget> liveWidgets = new ArrayList<Widget>();
+		
+		for (NewsItem item : liveActs) {
+			liveWidgets.add(generateWidget(item));
+		}
+		return liveWidgets;
 	}
 	
 	public Widget getGreeting() {
@@ -276,7 +301,11 @@ public class ContentProvider {
 		contentLabel.addStyleName(res.css().newsContent());
 		p.add(contentLabel);
 
-		Label authorLabel = new Label("- " + newsItem.getAuthor());
+		String authorPrefix = "- ";
+		if (newsItem.getAuthor() == null || newsItem.getAuthor().equals(""))
+			authorPrefix = " ";
+		
+		Label authorLabel = new Label(authorPrefix + newsItem.getAuthor());
 		authorLabel.setStyleName(res.css().contentText());
 		authorLabel.addStyleName(res.css().newsAuthor());
 		p.add(authorLabel);
