@@ -2,4 +2,6 @@
 war/circulus/
 war/WEB-INF/classes
 war/WEB-INF/deploy
+#ignore other bin directories
 .gwt
+gwt-unitCache
