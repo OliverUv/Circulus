@@ -5,6 +5,7 @@ import static com.google.gwt.query.client.GQuery.$;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.allen_sauer.gwt.log.client.Log;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.DOM;
@@ -29,7 +30,7 @@ public class StaticContent {
 				"<img class=\"" +
 				injector.getResources().css().backgroundImage() +
 				"\" src=\"" + 
-				injector.getResources().background().getURL() +
+				injector.getResources().background().getSafeUri().asString() +
 				"\"/>"
 				);
 		
@@ -74,11 +75,16 @@ public class StaticContent {
 		}
 	}
 
+	public void switchToHiresBackground() {
+		$("."+ injector.getResources().css().backgroundImage())
+		.attr("src", injector.getResources().backgroundHighResolution().getSafeUri().asString());
+	}
+	
 	private Hyperlink createTitleLink() {
 		Element img = DOM.createImg();
 		img.setClassName(injector.getResources().css().title());
 		img.setAttribute("alt", "Circulus");
-		img.setAttribute("src", injector.getResources().title().getURL());
+		img.setAttribute("src", injector.getResources().title().getSafeUri().asString());
 
 		Hyperlink link = new Hyperlink(img.getString(), true, "");
 		return link;
@@ -129,7 +135,7 @@ public class StaticContent {
 		img.setClassName(cssClassName);
 		img.setAttribute("alt", altText);
 		if (altAsTitle) {img.setAttribute("title", altText);}
-		img.setAttribute("src", imageResource.getURL());
+		img.setAttribute("src", imageResource.getSafeUri().asString());
 
 		Anchor link = new Anchor(img.getString(), true, url);
 		return link;

@@ -63,8 +63,11 @@ public interface BundledResources extends ClientBundle {
 	@Source ("thought.png")
 	public ImageResource thought();
 
-	@Source ("newscan-bg.jpg")
+	@Source ("newscan-bg-lq.jpg")
 	public ImageResource background();
+	
+	@Source ("newscan-bg-hq.jpg")
+	public ImageResource backgroundHighResolution();
 	
 	@Source ("youtubebutton.png")
 	public ImageResource youtubeImage();

@@ -105,7 +105,7 @@ public class DiscogViewImpl extends Composite implements DiscogView {
 		Element img = DOM.createImg();
 		img.setClassName(cssClassName);
 		img.setAttribute("alt", album.getName());
-		img.setAttribute("src", album.getAlbumCover().getURL());
+		img.setAttribute("src", album.getAlbumCover().getSafeUri().asString());
 		
 		Hyperlink l = new Hyperlink(img.getString(), true, mapper.getToken(new DiscogPlace(album.getKey())));
 		return l;
@@ -118,7 +118,7 @@ public class DiscogViewImpl extends Composite implements DiscogView {
 			Element img = DOM.createImg();
 			img.setClassName(res.css().currentAlbumImage());
 			img.setAttribute("alt", i.getName());
-			img.setAttribute("src", i.getAlbumCover().getURL());
+			img.setAttribute("src", i.getAlbumCover().getSafeUri().asString());
 			
 			imageMap.put(i.getKey(), img);
 		}

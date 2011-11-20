@@ -33,6 +33,9 @@ import com.google.gwt.query.client.Selectors;
 import com.google.gwt.resources.client.ImageResource;
 import com.google.inject.Inject;
 import com.google.inject.Provider;
+import com.reveregroup.gwt.imagepreloader.ImageLoadEvent;
+import com.reveregroup.gwt.imagepreloader.ImageLoadHandler;
+import com.reveregroup.gwt.imagepreloader.ImagePreloader;
 
 import static com.google.gwt.query.client.GQuery.*;
 import static com.google.gwt.query.client.css.CSS.*;
@@ -73,9 +76,38 @@ public class Circulus implements EntryPoint {
 		RootPanel.get(Constants.menuPaneId).add(injector.getMenu());
 		RootPanel.get(Constants.contentPaneId).add(contentContainer);
 		phh.handleCurrentHistory();
+		
+		//Pre-load images
+		ImageLoadHandler onAlbumsLoadedHandler = new OnAlbumImagesLoaded();
+		
+		ImagePreloader.load(injector.getResources().clocks().getSafeUri().asString(), onAlbumsLoadedHandler);
+		ImagePreloader.load(injector.getResources().giantism().getSafeUri().asString(), onAlbumsLoadedHandler);
+		ImagePreloader.load(injector.getResources().lick().getSafeUri().asString(), onAlbumsLoadedHandler);
+		ImagePreloader.load(injector.getResources().thought().getSafeUri().asString(), onAlbumsLoadedHandler);
+	}
+	
+	private class OnAlbumImagesLoaded implements ImageLoadHandler {
+		int imagesLoaded = 0;
+		
+		@Override
+		public void imageLoaded(ImageLoadEvent event) {
+			imagesLoaded++;
+			if (imagesLoaded < 4)
+				return;
+			
+			// When all album images have loaded, load the hi-res background
+			ImagePreloader.load(injector.getResources().backgroundHighResolution().getSafeUri().asString(), new ImageLoadHandler() {
+				public void imageLoaded(ImageLoadEvent event) {
+					// Switch the low-res background for the hi-res one
+					injector.getStaticContent().switchToHiresBackground();
+				}
+			});
+		}
 	}
 	
 	private void initializeImageSize(SizeManager resizeHandler) {
 		resizeHandler.resizeCanvasImage(Window.getClientWidth(), Window.getClientHeight());
 	}
+
+	
 }

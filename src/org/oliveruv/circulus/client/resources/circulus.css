@@ -32,7 +32,7 @@ a {
 .menuPane {
 	position: absolute;
 	top: 32%;
-	left: 4%;
+	left: 3%;
 	width: 60%;
 	height: 8%;
 	z-index: 2;
@@ -50,7 +50,7 @@ a {
 @if user.agent ie6 ie8 {
 	.menuPane {
 		font-family: Cardo;
-		left: 4.5%;
+		left: 4%;
 	}
 }
 
@@ -160,9 +160,11 @@ a {
 	margin-left: 2%;
 	margin-right: 5%;
 	
+	font-size: 70%;
+	
 	border-top: 1px groove #777;
 	text-align: justify;
-	line-height: 170%;
+	line-height: 140%;
 }
 
 .mediaTextIndent {

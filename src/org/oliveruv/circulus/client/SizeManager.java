@@ -14,6 +14,7 @@ import com.google.inject.Inject;
 import com.google.gwt.query.client.Function;
 import com.google.gwt.query.client.Selector;
 import com.google.gwt.query.client.Selectors;
+import com.google.gwt.resources.client.ImageResource;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Image;
 
@@ -34,6 +35,12 @@ class SizeManager implements ResizeHandler {
 		this.resources   = resources;
 		this.canvasImageWidth  = (double) resources.background().getWidth();
 		this.canvasImageHeight = (double) resources.background().getHeight();
+		this.canvasImageRatio  = this.canvasImageHeight / this.canvasImageWidth;
+	}
+	
+	public void setNewCanvasImage(ImageResource newImage) {
+		this.canvasImageWidth = newImage.getWidth();
+		this.canvasImageHeight = newImage.getHeight();
 		this.canvasImageRatio  = this.canvasImageHeight / this.canvasImageWidth;
 	}
 	
@@ -80,12 +87,6 @@ class SizeManager implements ResizeHandler {
 	private void centerImage(GQuery imageTag, double screenWidth, double screenHeight) {
 		imageTag.css(CSS.LEFT.with(Length.px((screenWidth - imageTag.width())/2)));
 		imageTag.css(CSS.TOP.with(Length.px((screenHeight - imageTag.height())/2)));
-	}
-	
-	private void log(String branch, double screenRatio, double screenHeight, double screenWidth) {
-		GWT.log("Branch: " + branch + "\n" +
-				"Image h/w (" + canvasImageHeight + "/" + canvasImageWidth + ") = " + canvasImageRatio +
-				"\nScreen h/w (" + screenHeight + "/" + screenWidth + ") = " + screenRatio);
 	}
 
 	@Override
