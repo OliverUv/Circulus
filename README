@@ -1,3 +1,5 @@
 Done with GWT. Feel free to pull and modify and do whatever.
 
+The code is not in a beautiful state. Particularly, the ContentProvider is a placeholder for datastore fetching of things.
+
 See COPYRIGHT file for license issues etc.
