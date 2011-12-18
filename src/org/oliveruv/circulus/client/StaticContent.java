@@ -64,6 +64,13 @@ public class StaticContent {
 				"\"/><a href=\"http://www.github.com/OliverUv/Circulus/blob/master/COPYRIGHT\">Copyrights etc, don't be a knave.</a>"
 				);
 		
+		//Add contact url
+				$("#"+ Constants.resizeTagId).append(
+						"<div class=\"" +
+						injector.getResources().css().contact() +
+						"\"/><a href=\"mailto:circulus.folk@virgin.net\">Contact Circulus.</a>"
+						);
+		
 		//Add title link image
 		$("#"+ Constants.resizeTagId)
 		.append(createTitleLink().getElement().getString());
@@ -114,7 +121,7 @@ public class StaticContent {
 						injector.getResources().fbImage(),
 						injector.getResources().css().fbImage(),
 						"Circulus on Facebook", true,
-						"http://www.facebook.com/pages/Circulus/109390525753763"
+						"http://www.facebook.com/pages/CIRCULUS/157272170793"
 				));
 		
 		imageLinks.add(

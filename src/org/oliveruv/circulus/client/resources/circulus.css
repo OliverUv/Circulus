@@ -391,6 +391,24 @@ a {
 		0px 2px 1px #59571d;
 }
 
+.contact {
+	position: absolute;
+	opacity: .9;
+	bottom: 4%;
+	left: 1.5%;
+	z-index: 2;
+	font-family: Quattrocento;
+	font-size: 180%;
+	font-weight: bold;
+	font-style: oblique;
+	color: #FFF;
+	text-shadow:
+		-2px 0px 1px #59571d,
+		0px -2px 1px #59571d,
+		2px 0px 1px #59571d,
+		0px 2px 1px #59571d;
+}
+
 .copyright {
 	position: absolute;
 	opacity: .75;

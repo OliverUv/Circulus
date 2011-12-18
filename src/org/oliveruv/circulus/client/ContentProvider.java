@@ -36,14 +36,14 @@ public class ContentProvider {
 
 	private ArrayList<NewsItem> generateLiveActs() {
 		ArrayList<NewsItem> items = new ArrayList<NewsItem>();
-		items.add(new NewsItem(
-				new Date(2011, 12, 6),
-				"",
-				"Glastonbury Assembly Rooms, Glastonbury. 8pm."));
-		items.add(new NewsItem(
-				new Date(2011, 12, 16),
-				"",
-				"All Services Club, Moseley, Birmingham. 8pm."));
+//		items.add(new NewsItem(
+//				new Date(2011, 12, 6),
+//				"",
+//				"Glastonbury Assembly Rooms, Glastonbury. 8pm."));
+//		items.add(new NewsItem(
+//				new Date(2011, 12, 16),
+//				"",
+//				"All Services Club, Moseley, Birmingham. 8pm."));
 		
 		return items;
 	}
@@ -210,6 +210,10 @@ public class ContentProvider {
 
 	private ArrayList<NewsItem> getNews() {
 		ArrayList<NewsItem> items = new ArrayList<NewsItem>();
+		items.add(new NewsItem(
+				new Date(2011, 12, 18),
+				"Oliver Uvman",
+				"Added contact link so you can email Circulus. Changed the Facebook url to the correct page!"));
 		items.add(new NewsItem(
 				new Date(2011, 11, 19),
 				"Oliver Uvman",

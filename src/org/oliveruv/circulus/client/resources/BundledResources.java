@@ -23,6 +23,7 @@ public interface BundledResources extends ClientBundle {
 		String active();
 		String pixies();
 		String copyright();
+		String contact();
 		
 		String title();
 		String wikiImage();
